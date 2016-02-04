@@ -9,17 +9,19 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Form Maker Tool</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -32,8 +34,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Login</a></li>
                 <li><a href="#">Username</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
@@ -43,63 +43,61 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-1 sidebar">
-            <ul class="nav nav-sidebar target-active">
-                <li class="active"><a href="home.html">Home</a></li>
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="home.html">Home</a></li>
                 <li class="active"><a href="profile.html">Profile</a></li>
-                <li class="active"><a href="admin.html">Admin</a></li>
-                <li class="active"><a href="forms.html">Forms</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="forms.html">Forms</a></li>
             </ul>
         </div>
-        <div class="col-lg-11 main">
-            <h1> Profile </h1>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <header><h3>Profile</h3></header>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label control-label-left">Username:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" placeholder="Username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label control-label-left">Password:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label control-label-left">Username:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="FirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="col-sm-2 control-label control-label-left">Username:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="LastName" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label control-label-left"> Email:</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Update</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </div>
-    <div class="row">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Username:</label>
-                <div class="col-sm-10">
-                    <input class="form-control" id="user" placeholder="Username">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Password:</label>
-                <div class="col-sm-10">
-                    <input class="form-control" id="password" placeholder="Password">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">First Name:</label>
-                <div class="col-sm-10">
-                    <input class="form-control" id="firstname" placeholder="First Name">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Last Name:</label>
-                <div class="col-sm-10">
-                    <input class="form-control" id="lastname" placeholder="Last Name">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Update</button>
-                </div>
-            </div>
-        </form>
     </div>
 </div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
+</html>
