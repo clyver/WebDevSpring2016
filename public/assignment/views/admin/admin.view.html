@@ -15,7 +15,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap dashboard lib, taken locally -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,13 +23,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <header>
-                <h1>Forms</h1>
-            </header>
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Forms</a></li>
-                <li role="presentation"><a href="form-fields.view.html">Fields</a></li>
-            </ul>
+            <h1> Admin </h1>
+            <h2> Users </h2>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -37,17 +32,31 @@
                         <a href="#" class="btn">
                             <scan class="glyphicon glyphicon-triangle-bottom"></scan>
                         </a>
-                        Form Name
+                        Username
                     </th>
                     <th>
                         <a href="#" class="btn">
                             <scan class="glyphicon glyphicon-triangle-bottom"></scan>
                         </a>
-                        Action
+                        Password
+                    </th>
+                    <th>
+                        <a href="#" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Role
+                    </th>
+                    <th>
+                        <a href="#" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Actions
                     </th>
                 </tr>
                 <tr>
-                    <td><input class="form-control" type="text" name="formName" placeholder="name"/></td>
+                    <td><input class="form-control" type="text" name="username" placeholder="Username"/></td>
+                    <td><input class="form-control" type="text" name="password" placeholder="Password"/></td>
+                    <td><input class="form-control" type="text" name="role" placeholder="role1, role2"/></td>
                     <td>
                         <a href="#" class="btn btn-primary">
                             <scan class="glyphicon glyphicon-plus"></scan>
@@ -60,22 +69,9 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>
-                        <a href="form-fields.view.html">Registration Form</a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-danger">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#" class="btn btn-warning">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="form-fields.view.html">Contact List</a>
-                    </td>
+                    <td>Alice</td>
+                    <td></td>
+                    <td>Student</td>
                     <td>
                         <a href="#" class="btn btn-danger">
                             <scan class="glyphicon glyphicon-remove"></scan>
@@ -86,9 +82,22 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Bob</td>
+                    <td></td>
+                    <td>Faculty | Admin</td>
                     <td>
-                        <a href="form-fields.view.html">To Do List</a>
+                        <a href="#" class="btn btn-danger">
+                            <scan class="glyphicon glyphicon-remove"></scan>
+                        </a>
+                        <a href="#" class="btn btn-warning">
+                            <scan class="glyphicon glyphicon-pencil"></scan>
+                        </a>
                     </td>
+                </tr>
+                <tr>
+                    <td>Charlie</td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <a href="#" class="btn btn-danger">
                             <scan class="glyphicon glyphicon-remove"></scan>
@@ -107,7 +116,8 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
