@@ -3,8 +3,8 @@
  */
 var app = angular.module("FormBuilderApp", ["ngRoute"]);
 
-app.controller("MainController", mainController);
+app.controller("MainController", MainController);
 
-function mainController(){
-
+function MainController($scope, $location){
+    $scope.loc = $location
 }
