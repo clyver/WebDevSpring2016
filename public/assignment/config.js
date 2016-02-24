@@ -22,6 +22,12 @@
             })
             .when('/forms', {
                 templateUrl: 'views/forms/forms.view.html'
-        })
+            })
+            .when('/register', {
+                templateUrl: 'views/users/register.view.html'
+            })
+            .when('/login', {
+                templateUrl: 'views/users/login.view.html'
+            })
     }
 })();
