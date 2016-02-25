@@ -21,9 +21,11 @@
     <script src="services/user.service.client.js"></script>
     <title>Form Maker</title>
 </head>
-{{users}}
+
 
 <body ng-controller="MainController">
+<button ng-click="setUsers()">Set users</button>
+{{users}}
     <div ng-include src="'views/header/header.view.html'"></div>
 
     <div class="container-fluid">
