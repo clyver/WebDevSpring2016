@@ -12,8 +12,7 @@
 
         function register(new_user) {
             UserService.createUser(new_user, function(res) {
-                $scope.registered_user = res;
-                $rootScope.new_user = new_user;
+                $rootScope.currentUser = new_user;
                 $location.url("/profile");
             });
         }
