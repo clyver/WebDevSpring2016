@@ -5,14 +5,12 @@
 
     function MainController($scope, $location, UserService) {
         $scope.loc = $location;
-        $scope.users = "dddd";
-
-        $scope.setUsers= setUsers;
+        $scope.getUsers = getUsers;
 
         function call(res) {
             $scope.users = res;
         }
-        function setUsers() {
+        function getUsers() {
             UserService.findAllUsers(call);
         }
     }

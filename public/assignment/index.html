@@ -18,13 +18,14 @@
     <script src="config.js"></script>
     <script src="views/main/main.controller.js"></script>
     <script src="views/header/header.controller.js"></script>
+    <script src="views/users/register.controller.js"></script>
     <script src="services/user.service.client.js"></script>
     <title>Form Maker</title>
 </head>
 
 
 <body ng-controller="MainController">
-<button ng-click="setUsers()">Set users</button>
+<button ng-click="getUsers()">get users</button>
 {{users}}
     <div ng-include src="'views/header/header.view.html'"></div>
 
