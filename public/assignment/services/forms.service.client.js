@@ -25,7 +25,7 @@
             form._id = (new Date()).getTime();
             form.userId = userId;
             forms.push(form);
-            callback(forms);
+            callback(form);
         }
 
         function findAllFormsForUser(userId, callback) {
@@ -52,7 +52,7 @@
             // Update the specified form
             var form_to_update = findFormIndexById(formId);
             forms[form_to_update] = newForm;
-            callback(forms);
+            callback(newForm);
         }
 
         function findFormIndexById(id) {
