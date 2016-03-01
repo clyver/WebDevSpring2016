@@ -10,6 +10,7 @@
 
         $scope.setForms = setForms;
         $scope.addForm = addForm;
+        $scope.deleteForm = deleteForm;
 
         function setForms() {
             FormService.findAllFormsForUser($rootScope.currentUser._id, function(res) {
@@ -19,13 +20,21 @@
 
         function addForm(newFormTitle) {
             var new_form = {"title": newFormTitle};
-            FormService.createFormForUser($rootScope.currentUser._id, new_form, function(res) {
-                setForms();
-            });
+            FormService.createFormForUser($rootScope.currentUser._id, new_form, updateUserForms);
+        }
+
+        function deleteForm(formId) {
+            FormService.deleteFormById(formId, updateUserForms);
         }
 
         (function init() {
             setForms()
         })();
+
+        function updateUserForms(res) {
+            // A default callback function for updating this user's forms after some action
+            // This is helpful because the FormService return everybody's forms
+            setForms();
+        }
     }
 })();
