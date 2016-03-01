@@ -2,7 +2,7 @@
     <ul class="nav nav-sidebar">
         <li><a href="#/">Home</a></li>
         <li><a href="#/profile">Profile</a></li>
-        <li><a href="#/admin">Admin</a></li>
+        <li ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0"><a href="#/admin">Admin</a></li>
         <li><a href="#/forms">Forms</a></li>
     </ul>
 </div>
