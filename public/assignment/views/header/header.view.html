@@ -12,7 +12,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li ng-show="!currentUser"><a href="#/register">Register</a></li>
-                <li><a href="#/login">Login</a></li>
+                <li ng-show="!currentUser"><a href="#/login">Login</a></li>
                 <li><a href="#/profile">Username</a></li>
                 <li><a href="#/home">Logout</a></li>
                 <li ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0"><a href="#/admin">Admin</a></li>
