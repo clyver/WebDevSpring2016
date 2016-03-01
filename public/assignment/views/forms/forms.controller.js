@@ -24,7 +24,7 @@
             FormService.createFormForUser($rootScope.currentUser._id, new_form, updateUserForms);
         }
 
-        function deleteForm(formId) {
+        function deleteForm(formId, formIndex) {
             FormService.deleteFormById(formId, updateUserForms);
         }
 
