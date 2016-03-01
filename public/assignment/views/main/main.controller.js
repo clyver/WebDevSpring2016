@@ -5,7 +5,7 @@
         .controller("MainController", MainController);
 
     function MainController($scope, $location) {
-        $scope.loc = $location;
+        $scope.$location = $location;
     }
 
 
