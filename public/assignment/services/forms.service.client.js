@@ -16,7 +16,8 @@
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
-            updateFormById: updateFormById
+            updateFormById: updateFormById,
+            findFormById: findFormById
         };
 
         return service;
@@ -53,6 +54,21 @@
             var form_to_update = findFormIndexById(formId);
             forms[form_to_update] = newForm;
             callback(newForm);
+        }
+
+        function findFormById(id) {
+            var forms_len = forms.length;
+            var found_form = null;
+
+            for (var i = 0; i < forms_len; i++) {
+                var form = forms[i];
+                if (form._id === id) {
+                    found_form = form;
+                    break;
+                }
+            }
+            return found_form;
+
         }
 
         function findFormIndexById(id) {

@@ -12,6 +12,8 @@
         $scope.setForms = setForms;
         $scope.addForm = addForm;
         $scope.deleteForm = deleteForm;
+        $scope.updateForm = updateForm;
+        $scope.selectForm = selectForm;
 
         function setForms() {
             FormService.findAllFormsForUser($rootScope.currentUser._id, function(res) {
@@ -26,6 +28,14 @@
 
         function deleteForm(formId, formIndex) {
             FormService.deleteFormById(formId, updateUserForms);
+        }
+
+        function updateForm(formId, newForm) {
+            FormService.updateFormById(formId, newForm, updateUserForms);
+        }
+
+        function selectForm(formId, formIndex) {
+            $scope.editForm = FormService.findFormById(formId);
         }
 
         (function init() {

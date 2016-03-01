@@ -25,12 +25,12 @@
                     </th>
                 </tr>
                 <tr>
-                    <td><input ng-model="inputFormTitle" class="form-control" type="text" name="formName" placeholder="name"/></td>
+                    <td><input ng-model="editForm.title" class="form-control" type="text" name="formName" placeholder="name"/></td>
                     <td>
-                        <a ng-click="addForm(inputFormTitle)" class="btn btn-primary">
+                        <a ng-click="addForm(editForm.title)" class="btn btn-primary">
                             <scan class="glyphicon glyphicon-plus"></scan>
                         </a>
-                        <a class="btn btn-success">
+                        <a ng-click="updateForm(edit_form._id, editForm)" class="btn btn-success">
                             <scan class="glyphicon glyphicon-ok"></scan>
                         </a>
                     </td>
@@ -43,7 +43,7 @@
                         <a ng-click="deleteForm(form._id, $index)" class="btn btn-danger">
                             <scan class="glyphicon glyphicon-remove"></scan>
                         </a>
-                        <a href="#" class="btn btn-warning">
+                        <a ng-click="selectForm(form._id, $index)" class="btn btn-warning">
                             <scan class="glyphicon glyphicon-pencil"></scan>
                         </a>
                     </td>
