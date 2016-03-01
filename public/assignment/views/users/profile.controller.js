@@ -13,7 +13,7 @@
             function update(user) {
                 UserService.updateUser(user.id, user, function(res) {
                     $rootScope.currentUser = user;
-                })
+                });
             }
         }
 })();

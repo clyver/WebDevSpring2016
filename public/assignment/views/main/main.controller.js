@@ -3,7 +3,7 @@
         .module("FormBuilderApp")
         .controller("MainController", MainController);
 
-    function MainController($scope, $location, UserService) {
+    function MainController($scope, $location) {
         $scope.loc = $location;
         $scope.getUsers = getUsers;
 

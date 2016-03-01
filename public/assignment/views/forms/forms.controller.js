@@ -15,7 +15,7 @@
         function setForms() {
             FormService.findAllFormsForUser($rootScope.currentUser._id, function(res) {
                 $scope.user_forms = res;
-            })
+            });
         }
 
         function addForm(newFormTitle) {
@@ -28,7 +28,7 @@
         }
 
         (function init() {
-            setForms()
+            setForms();
         })();
 
         function updateUserForms(res) {

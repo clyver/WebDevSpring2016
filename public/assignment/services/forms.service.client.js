@@ -21,7 +21,7 @@
         return service;
 
         function createFormForUser(userId, form, callback) {
-            form._id = (new Date).getTime();
+            form._id = (new Date()).getTime();
             form.userId = userId;
             forms.push(form);
             callback(forms);
