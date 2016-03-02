@@ -21,9 +21,13 @@
             });
         }
 
-        function addForm(newFormTitle) {
-            var new_form = {"title": newFormTitle};
-            FormService.createFormForUser($rootScope.currentUser._id, new_form, updateUserForms);
+        function addForm(newForm) {
+            var new_form = {"title": newForm.title};
+            FormService.createFormForUser($rootScope.currentUser._id, new_form, function(res) {
+                setForms();
+                $scope.editForm = {"title": res.title, "_id": res._id, "userId": res.userId};
+            });
+
         }
 
         function deleteForm(formId, formIndex) {
