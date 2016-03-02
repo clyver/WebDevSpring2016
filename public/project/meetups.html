@@ -33,7 +33,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="mentorProfile.html">Bob</a></li>
+                <li><a href="mentorProfile.html">Bob</a></li>
                 <li><a href="index.html">Logout</a></li>
             </ul>
         </div>
@@ -44,8 +44,8 @@
     <div class="text-center" class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="">Mentor Profile</a></li>
-                <li><a href="meetups.html">Meetups</a></li>
+                <li><a href="mentorProfile.html">Mentor Profile</a></li>
+                <li  class="active"><a href="meetups.html">Meetups</a></li>
                 <li><a href="feedback.html">Feedback</a></li>
                 <li><a href="nearby.html">Nearby</a></li>
                 <li><a href="apprenticeProfile.html">Apprentice Mode</a></li>
@@ -53,41 +53,32 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <header>
-                <h2>About You:</h2>
+                <h2>Upcoming Meetups:</h2>
             </header>
-            <p>
-                First Name: Bob <br>
-                Last Name: Smith <br>
-                Email: bob@smith.com <br>
-                City: Boston <br>
-                About You: Hi, I'm Bob! <br>
-            <form>
-                <input type="submit" value="Edit Profile">
-            </form>
-            </p>
-
-            <h2>Taught Skills:</h2>
             <table class="table table-striped">
                 <tr>
+                    <th>User</th>
+                    <th>Date</th>
                     <th>Skill</th>
-                    <th>Level</th>
                     <th>Actions</th>
                 </tr>
                 <tr>
-                <td><input class="form-control" type="text" name="newSkill" placeholder="New Skill"/></td>
-                <td><input class="form-control" type="text" name="skillLevel" placeholder="Skill Level"/></td>
-                <td>
-                    <a href="#" class="btn btn-primary">
-                        <scan class="glyphicon glyphicon-plus"></scan>
-                    </a>
-                    <a href="#" class="btn btn-success">
-                        <scan class="glyphicon glyphicon-ok"></scan>
-                    </a>
-                </td>
+                    <td><input class="form-control" type="text" name="user2meet" placeholder="Acquaintance"/></td>
+                    <td><input class="form-control" type="text" name="date" placeholder="Date"/></td>
+                    <td><input class="form-control" type="text" name="skill" placeholder="Skill"/></td>
+                    <td>
+                        <a href="#" class="btn btn-primary">
+                            <scan class="glyphicon glyphicon-plus"></scan>
+                        </a>
+                        <a href="#" class="btn btn-success">
+                            <scan class="glyphicon glyphicon-ok"></scan>
+                        </a>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Skating</td>
-                    <td>Intermediate</td>
+                    <td>user1</td>
+                    <td>3/4/16</td>
+                    <td>Salsa Dancing</td>
                     <td>
                         <a href="#" class="btn btn-danger">
                             <scan class="glyphicon glyphicon-remove"></scan>
@@ -98,8 +89,31 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Bird Watching</td>
-                    <td>Advanced</td>
+                    <td>user2</td>
+                    <td>3/9/16</td>
+                    <td>Nutrition</td>
+                    <td>
+                        <a href="#" class="btn btn-danger">
+                            <scan class="glyphicon glyphicon-remove"></scan>
+                        </a>
+                        <a href="#" class="btn btn-warning">
+                            <scan class="glyphicon glyphicon-pencil"></scan>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <h2>Past Meetups:</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Skill</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>user1</td>
+                    <td>3/4/16</td>
+                    <td>Salsa Dancing</td>
                     <td>
                         <a href="#" class="btn btn-danger">
                             <scan class="glyphicon glyphicon-remove"></scan>
@@ -110,20 +124,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Coding</td>
-                    <td>Career Professional</td>
-                    <td>
-                        <a href="#" class="btn btn-danger">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#" class="btn btn-warning">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Yoga</td>
-                    <td>Advanced</td>
+                    <td>user2</td>
+                    <td>3/9/16</td>
+                    <td>Nutrition</td>
                     <td>
                         <a href="#" class="btn btn-danger">
                             <scan class="glyphicon glyphicon-remove"></scan>
