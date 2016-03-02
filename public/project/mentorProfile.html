@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SkillSharer</title>
+
+    <!-- Bootstrap core CSS, taken from CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap dashboard lib, taken locally -->
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">SkillSharer</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="mentorProfile.html">Bob</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="text-center" class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="">Mentor Profile</a></li>
+                <li><a href="rendezvous.html">Rendezvous</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="nearby.html">Nearby</a></li>
+                <li><a href="apprenticeProfile.html">Apprentice Mode</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <header>
+                <h2>About You:</h2>
+            </header>
+            <p>
+                First Name: Bob <br>
+                Last Name: Smith <br>
+                Email: bob@smith.com <br>
+                City: Boston <br>
+                About You: Hi, I'm Bob! <br>
+            <form>
+                <input type="submit" value="Edit Profile">
+            </form>
+            </p>
+
+            <h2>Taught Skills:</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Skill</th>
+                    <th>Level</th>
+                    <th>Actions</th>
+                </tr>
+                <td><input class="form-control" type="text" name="newSkill" placeholder="New Skill"/></td>
+                <td><input class="form-control" type="text" name="skillLevel" placeholder="Skill Level"/></td>
+                <td>
+                    <a href="#" class="btn btn-primary">
+                        <scan class="glyphicon glyphicon-plus"></scan>
+                    </a>
+                    <a href="#" class="btn btn-success">
+                        <scan class="glyphicon glyphicon-ok"></scan>
+                    </a>
+                </td>
+                <tr>
+                    <td>Skating</td>
+                    <td>Intermediate</td>
+                    <td>
+                        <a href="#" class="btn btn-danger">
+                            <scan class="glyphicon glyphicon-remove"></scan>
+                        </a>
+                        <a href="#" class="btn btn-warning">
+                            <scan class="glyphicon glyphicon-pencil"></scan>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bird Watching</td>
+                    <td>Advanced</td>
+                    <td>
+                        <a href="#" class="btn btn-danger">
+                            <scan class="glyphicon glyphicon-remove"></scan>
+                        </a>
+                        <a href="#" class="btn btn-warning">
+                            <scan class="glyphicon glyphicon-pencil"></scan>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Coding</td>
+                    <td>Career Professional</td>
+                    <td>
+                        <a href="#" class="btn btn-danger">
+                            <scan class="glyphicon glyphicon-remove"></scan>
+                        </a>
+                        <a href="#" class="btn btn-warning">
+                            <scan class="glyphicon glyphicon-pencil"></scan>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Yoga</td>
+                    <td>Advanced</td>
+                    <td>
+                        <a href="#" class="btn btn-danger">
+                            <scan class="glyphicon glyphicon-remove"></scan>
+                        </a>
+                        <a href="#" class="btn btn-warning">
+                            <scan class="glyphicon glyphicon-pencil"></scan>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
