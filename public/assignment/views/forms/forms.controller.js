@@ -30,12 +30,15 @@
             FormService.deleteFormById(formId, updateUserForms);
         }
 
-        function updateForm(formId, newForm) {
-            FormService.updateFormById(formId, newForm, updateUserForms);
+        function updateForm(newForm) {
+            // The form with the given ID has been selected by the user
+            // Update the form the user selected, with this new form
+            FormService.updateFormById(newForm._id, newForm, updateUserForms);
         }
 
         function selectForm(formId, formIndex) {
-            $scope.editForm = FormService.findFormById(formId);
+            var selected_form = FormService.findFormById(formId);
+            $scope.editForm = {"title" :selected_form.title, "userId": selected_form.userId, "_id": selected_form._id}
         }
 
         (function init() {

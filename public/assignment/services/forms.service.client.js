@@ -52,8 +52,9 @@
         function updateFormById(formId, newForm, callback) {
             // Update the specified form
             var form_to_update = findFormIndexById(formId);
-            forms[form_to_update] = newForm;
-            callback(newForm);
+            var new_form = {"title": newForm.title, "userId": newForm.userId, "_id": newForm._id};
+            forms[form_to_update] = new_form;
+            callback(new_form);
         }
 
         function findFormById(id) {
