@@ -16,12 +16,17 @@
                 templateUrl: 'views/users/profile.view.html',
                 controller: 'ProfileController'
             })
-            .when('/admin', {
-                templateUrl: 'views/admin/admin.view.html'
+            .when('/meetups', {
+                templateUrl: 'views/users/meetups.view.html',
+                controller:  'MeetupsController'
             })
-            .when('/forms', {
-                templateUrl: 'views/forms/forms.view.html',
-                controller: 'FormController'
+            .when('/feedback', {
+                templateUrl: 'views/users/feedback.view.html',
+                controller: 'FeedbackController'
+            })
+            .when('/nearby', {
+                templateUrl: 'views/users/nearby.view.html',
+                controller: 'NearbyController'
             })
             .when('/register', {
                 templateUrl: 'views/users/register.view.html',
