@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <header><h3>Profile</h3></header>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label control-label-left">Username:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="currentUser.username" type="text" class="form-control" id="username" placeholder="{{currentUser.username}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label control-label-left">Password:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="currentUser.password" type="password" class="form-control" id="password" placeholder="{{currentUser.password}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label control-label-left">First Name:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="currentUser.firstName" type="text" class="form-control" id="FirstName" placeholder="{{currentUser.FirstName}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="col-sm-2 control-label control-label-left">Last name:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="currentUser.lastName" type="text" class="form-control" id="LastName" placeholder="{{currentUser.lastName}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label control-label-left"> Email:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="currentUser.email" type="email" class="form-control" id="email" placeholder="{{currentUser.email}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a ng-click="update(currentUser)" class="btn btn-default" role="button">Update</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

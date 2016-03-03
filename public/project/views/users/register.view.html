@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="main text-center">
+            <header>
+                <h1>Welcome!</h1>
+            </header>
+            <p>
+                We all have something to learn
+            </p>
+            <p>
+                <a href="#/login">Already have an account?</a>
+            </p>
+            <p>
+            <h2>Register:</h2>
+            </p>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label control-label-left">First Name:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="new_user.firstName" type="text" class="form-control" id="firstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label control-label-left">Last Name:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="new_user.lastName" type="text" class="form-control" id="lastName" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label control-label-left">Username:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="new_user.username" type="text" class="form-control" id="username" placeholder="Username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label control-label-left">Password:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="new_user.password" type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" class="col-sm-2 control-label control-label-left">Verify Password:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Verify Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label control-label-left">Email:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="new_user.email" type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a ng-click="register(new_user)" class="btn btn-default btn-block" role="button">Register</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
