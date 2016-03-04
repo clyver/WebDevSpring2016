@@ -8,82 +8,83 @@
         .factory("SkillService", SkillService);
 
     function SkillService() {
-        var forms = [ {"_id": "000", "title": "Contacts", "userId": 123},
-                      {"_id": "010", "title": "ToDo",     "userId": 123},
-                      {"_id": "020", "title": "CDs",      "userId": 234}];
+        var skills = [ {"_id": "000", "title": "birdwatching", "level": "novice", "userId": 123},
+                      {"_id": "010", "title": "surfing", "level": "Advanced", "userId": 123},
+                      {"_id": "020","title": "coding", "level": "Professional", "userId": 234}];
 
         var service = {
-            createFormForUser: createFormForUser,
-            findAllFormsForUser: findAllFormsForUser,
-            deleteFormById: deleteFormById,
-            updateFormById: updateFormById,
-            findFormById: findFormById
+            createSkillForUser: createSkillForUser,
+            findAllSkillsForUser: findAllSkillsForUser,
+            deleteSkillById: deleteSkillById,
+            updateSkillById: updateSkillById,
+            findSkillById: findSkillById
         };
 
         return service;
 
-        function createFormForUser(userId, form, callback) {
-            form._id = (new Date()).getTime();
-            form.userId = userId;
-            forms.push(form);
-            callback(form);
+        function createSkillForUser(userId, skill, callback) {
+            skill._id = (new Date()).getTime();
+            skill.userId = userId;
+            var skill_to_add = {"_id": skill._id, "title": skill.title, "level": skill.level, "userId": skill.userId};
+            skills.push(skill_to_add);
+            callback(skill_to_add);
         }
 
-        function findAllFormsForUser(userId, callback) {
-            var user_forms = [];
-            var forms_len = forms.length;
-            for (var i = 0; i < forms_len; i++) {
-                var form = forms[i];
-                if (form.userId === userId) {
-                    user_forms.push(form);
+        function findAllSkillsForUser(userId, callback) {
+            var user_skills = [];
+            var skills_len = skills.length;
+            for (var i = 0; i < skills_len; i++) {
+                var skill = skills[i];
+                if (skill.userId === userId) {
+                    user_skills.push(skill);
                 }
             }
-            callback(user_forms);
+            callback(user_skills);
         }
 
-        function deleteFormById(formId, callback) {
-            // Delete the given form from our list of forms
-            var form_to_delete = findFormIndexById(formId);
-            // Splice out the form_to_delete
-            forms.splice(form_to_delete, 1);
-            callback(forms);
+        function deleteSkillById(skillId, callback) {
+            // Delete the given skill from our list of skills
+            var skill_to_delete = findSkillIndexById(skillId);
+            // Splice out the skill_to_delete
+            skills.splice(skill_to_delete, 1);
+            callback(skills);
         }
 
-        function updateFormById(formId, newForm, callback) {
-            // Update the specified form
-            var form_to_update = findFormIndexById(formId);
-            var new_form = {"title": newForm.title, "userId": newForm.userId, "_id": newForm._id};
-            forms[form_to_update] = new_form;
-            callback(new_form);
+        function updateSkillById(skillId, newSkill, callback) {
+            // Update the specified skill
+            var skill_to_update = findSkillIndexById(skillId);
+            var new_skill = {"title": newSkill.title, "level": newSkill.level,"userId": newSkill.userId, "_id": newSkill._id};
+            skills[skill_to_update] = new_skill;
+            callback(new_skill);
         }
 
-        function findFormById(id) {
-            var forms_len = forms.length;
-            var found_form = null;
+        function findSkillById(id) {
+            var skills_len = skills.length;
+            var found_skill = null;
 
-            for (var i = 0; i < forms_len; i++) {
-                var form = forms[i];
-                if (form._id === id) {
-                    found_form = form;
+            for (var i = 0; i < skills_len; i++) {
+                var skill = skills[i];
+                if (skill._id === id) {
+                    found_skill = skill;
                     break;
                 }
             }
-            return found_form;
+            return found_skill;
 
         }
 
-        function findFormIndexById(id) {
-            // A helper to find the index of the form with the given id
-            var forms_len = forms.length;
-            var form_index = -1;
-            for (var i = 0; i < forms_len; i++) {
-                var form = forms[i];
-                if (form._id === id) {
-                    form_index = i;
+        function findSkillIndexById(id) {
+            // A helper to find the index of the skill with the given id
+            var skills_len = skills.length;
+            var skill_index = -1;
+            for (var i = 0; i < skills_len; i++) {
+                var skill = skills[i];
+                if (skill._id === id) {
+                    skill_index = i;
                     break;
                 }
             }
-            return form_index;
+            return skill_index;
         }
     }
 })();

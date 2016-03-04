@@ -35,10 +35,61 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <a ng-click="update(currentUser)" class="btn btn-default" role="button">Update</a>
+                        <a ng-click="update(currentUser)" class="btn btn-default btn-block" role="button">Update</a>
                     </div>
                 </div>
             </form>
+            <h3>Taught Skills:</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        <a href="#/forms" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Skill
+                    </th>
+                    <th>
+                        <a href="#/forms" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Level
+                    </th>
+                    <th>
+                        <a href="#/forms" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Actions
+                    </th>
+                </tr>
+                <tr>
+                    <td><input ng-model="editSkill.title" class="form-control" type="text" name="skillName" placeholder="Skill Name"/></td>
+                    <td><input ng-model="editSkill.level" class="form-control" type="text" name="skillLevel" placeholder="Skill Level"/></td>
+                    <td>
+                        <a ng-click="addSkill(currentUser, editSkill)" class="btn btn-primary">
+                            <scan class="glyphicon glyphicon-plus"></scan>
+                        </a>
+                        <a ng-click="updateSkill(editSkill)" class="btn btn-success">
+                            <scan class="glyphicon glyphicon-ok"></scan>
+                        </a>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="skill in user_skills">
+                    <td>{{skill.title}}</td>
+                    <td>{{skill.level}}</td>
+                    <td>
+                        <a ng-click="deleteSkill(skill._id)" class="btn btn-danger">
+                            <scan class="glyphicon glyphicon-remove"></scan>
+                        </a>
+                        <a ng-click="selectSkill(skill._id)" class="btn btn-warning">
+                            <scan class="glyphicon glyphicon-pencil"></scan>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
