@@ -13,12 +13,21 @@
 
         function register(new_user) {
             new_user._id = (new Date()).getTime();
-            // I'll assume only a student registration
-            new_user.roles =  ["student"];
-            UserService.createUser(new_user, function(res) {
-                $rootScope.currentUser = new_user;
-                $location.url("/profile");
-            });
+            new_user.roles = [];
+            if (new_user.mentor) {
+                new_user.roles.push("mentor");
+            }
+            if (new_user.apprentice){
+                new_user.roles.push("apprentice");
+            }
+
+            // Only register the user if they select at least one role
+            if (new_user.roles) {
+                UserService.createUser(new_user, function (res) {
+                    $rootScope.currentUser = new_user;
+                    $location.url("/profile");
+                });
+            }
         }
     }
 })();
