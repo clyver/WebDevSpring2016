@@ -16,9 +16,9 @@
                 templateUrl: 'views/users/profile.view.html',
                 controller: 'ProfileController'
             })
-            .when('/meetups', {
-                templateUrl: 'views/users/meetups.view.html',
-                controller:  'MeetupsController'
+            .when('/meetup', {
+                templateUrl: 'views/meetup/meetup.view.html',
+                controller:  'MeetupController'
             })
             .when('/feedback', {
                 templateUrl: 'views/users/feedback.view.html',
