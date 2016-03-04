@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <header><h1>Overall Rating: 3/5</h1></header>
+            <h3>Rating by Skill:</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        <a href="#/meetup" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Skil
+                    </th>
+                    <th>
+                        <a href="#/meetup" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Rating
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="skill in user_skills">
+                    <td>{{skill.title}}</td>
+                    <td>3/5</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

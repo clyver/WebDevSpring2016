@@ -22,7 +22,7 @@
 
             function setSkills() {
                 SkillService.findAllSkillsForUser($rootScope.currentUser._id, function(res) {
-                    $scope.user_skills = res;
+                    $rootScope.user_skills = res;
                 });
             }
 

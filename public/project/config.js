@@ -21,8 +21,8 @@
                 controller:  'MeetupController'
             })
             .when('/feedback', {
-                templateUrl: 'views/users/feedback.view.html',
-                controller: 'FeedbackController'
+                templateUrl: 'views/feedback/feedback.view.html',
+
             })
             .when('/nearby', {
                 templateUrl: 'views/users/nearby.view.html',
