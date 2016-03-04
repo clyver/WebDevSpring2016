@@ -4,7 +4,7 @@
 "use strict";
 (function() {
     angular
-        .module("SkillSharer")
+        .module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
     function LoginController($scope, $location, $rootScope, UserService) {
