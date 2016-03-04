@@ -25,7 +25,7 @@
 
             })
             .when('/nearby', {
-                templateUrl: 'views/users/nearby.view.html',
+                templateUrl: 'views/nearby/nearby.view.html',
                 controller: 'NearbyController'
             })
             .when('/register', {

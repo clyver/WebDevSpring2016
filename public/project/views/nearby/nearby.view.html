@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <header><h1>Nearby Skills:</h1></header>
+            <img class="displayed" src="https://img.washingtonpost.com/wp-apps/imrs.php?src=https://img.washingtonpost.com/news/post-nation/wp-content/uploads/sites/23/2015/03/Screen-Shot-2015-03-06-at-12.55.13-PM.png&w=1484" style="text-align: center;width:304px;height:228px;"><br><br>
+
+            <form>
+                <div class="form-group">
+                    <label for="search">Search</label>
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <input type="email" class="form-control" id="search" placeholder="Search Coming Soon!">
+                </div>
+            </form>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        <a href="#/nearby" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Skill
+                    </th>
+                    <th>
+                        <a href="#/nearby" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Rating
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="user in nearbyUsers">
+                    <td>{{user.firstName}} {{user.lastName}}</td>
+                    <td>3/5</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
