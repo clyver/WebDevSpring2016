@@ -26,7 +26,7 @@
         }
 
         function addMeetup(currentUser, meetup) {
-            if (meetup.peer_id && meetup.date && meetup.skill) {
+            if (meetup && meetup.peer_id && meetup.date && meetup.skill) {
                 MeetupService.createMeetupForUser(currentUser._id, meetup, updateUserMeetups);
             }
         }
@@ -38,7 +38,7 @@
         function updateMeetup(newMeetup) {
             // The form with the given ID has been selected by the user
             // Update the meetup the user selected, with this new form
-            if (newMeetup.peer_id && newMeetup.date && newMeetup.skill) {
+            if (newMeetup && newMeetup.peer_id && newMeetup.date && newMeetup.skill) {
                 MeetupService.updateMeetupById(newMeetup._id, newMeetup, updateUserMeetups);
             }
         }

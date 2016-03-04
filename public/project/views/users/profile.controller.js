@@ -33,7 +33,9 @@
             }
 
             function addSkill(currentUser, skill) {
-                SkillService.createSkillForUser(currentUser._id, skill, setSkills)
+                if (skill && skill.title && skill.level) {
+                    SkillService.createSkillForUser(currentUser._id, skill, setSkills)
+                }
             }
 
             function deleteSkill(skill) {
@@ -43,7 +45,9 @@
             function updateSkill(newSkill) {
                 // The form with the given ID has been selected by the user
                 // Update the skill the user selected, with this new form
-                SkillService.updateSkillById(newSkill._id, newSkill, updateUserSkills);
+                if (newSkill && newSkill.title && newSkill.level) {
+                    SkillService.updateSkillById(newSkill._id, newSkill, updateUserSkills);
+                }
             }
 
             function selectSkill(skillId) {
