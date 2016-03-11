@@ -14,6 +14,10 @@
                 <li ng-class="{'active': $location.path() === '/register'}" ng-show="!currentUser"><a href="#/register">Register</a></li>
                 <li ng-class="{'active': $location.path() === '/login'}" ng-show="!currentUser"><a href="#/login">Login</a></li>
                 <li ng-class="{'active': $location.path() === '/profile'}" ng-show="currentUser"><a href="#/profile">{{currentUser.username}}</a></li>
+                <li class="hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.path() === '/meetup'}" ng-show="currentUser"><a href="#/meetup">Meetups</a></li>
+                <li class="hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.path() === '/feedback'}" ng-show="currentUser"><a href="#/feedback">Feedback</a></li>
+                <li class="hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.path() === '/nearby'}" ng-show="currentUser"><a href="#/nearby">Nearby</a></li>
+                <li class="hidden-sm hidden-md hidden-lg" ng-show="currentUser"><a ng-click="switchMode()" href="#/profile">Switch Mode</a></li>
                 <li ng-show="currentUser"><a ng-click="logout()" href="#/home">Logout</a></li>
             </ul>
         </div>
