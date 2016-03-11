@@ -14,12 +14,10 @@
                 <li ng-class="{'active': $location.path() === '/register'}" ng-show="!currentUser"><a href="#/register">Register</a></li>
                 <li ng-class="{'active': $location.path() === '/login'}" ng-show="!currentUser"><a href="#/login">Login</a></li>
                 <li ng-class="{'active': $location.path() === '/profile'}" ng-show="currentUser"><a href="#/profile">{{currentUser.username}}</a></li>
-                <li ng-show="currentUser"><a ng-click="logout()" href="#/home">Logout</a></li>
                 <li class="hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.path() === '/' || $location.path() === '/home'}"><a href="#/">Home</a></li>
-                <li class="hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.path() === '/profile'}" ng-show="currentUser"><a href="#/profile">Profile</a></li>
                 <li class="hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.path() === '/admin'}" ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0"><a href="#/admin">Admin</a></li>
                 <li class="hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.path() === '/forms'}"ng-show="currentUser"><a href="#/forms">Forms</a></li>
-                <li class="hidden-sm hidden-md hidden-lg" ng-class="{'active': $location.path() === '/admin'}" ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0"><a href="#/admin">Admin</a></li>
+                <li ng-show="currentUser"><a ng-click="logout()" href="#/home">Logout</a></li>
             </ul>
         </div>
     </div>
