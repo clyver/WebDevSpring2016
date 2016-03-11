@@ -8,9 +8,12 @@
         .factory("SkillService", SkillService);
 
     function SkillService() {
-        var skills = [ {"_id": "000", "title": "birdwatching", "level": "novice", "userId": 123},
-                      {"_id": "010", "title": "surfing", "level": "Advanced", "userId": 123},
-                      {"_id": "020","title": "coding", "level": "Professional", "userId": 234}];
+        var skills = [ {"_id": "000", "title": "birdwatching", "level": "novice", "mode": "mentor", "userId": 123},
+                       {"_id": "010", "title": "surfing", "level": "Advanced", "mode": "mentor", "userId": 123},
+                       {"_id": "020","title": "coding", "level": "Professional", "mode": "mentor", "userId": 234},
+                       {"_id": "030", "title": "guitar lessons", "level": "experienced", "mode": "apprentice", "userId": 123},
+                       {"_id": "040", "title": "gardening", "level": "Pro", "mode": "apprentice", "userId": 123}];
+
 
         var service = {
             createSkillForUser: createSkillForUser,
@@ -25,17 +28,22 @@
         function createSkillForUser(userId, skill, callback) {
             skill._id = (new Date()).getTime();
             skill.userId = userId;
-            var skill_to_add = {"_id": skill._id, "title": skill.title, "level": skill.level, "userId": skill.userId};
+            var skill_to_add = {"_id": skill._id, "title": skill.title, "level": skill.level, "mode": skill.mode, "userId": skill.userId};
             skills.push(skill_to_add);
             callback(skill_to_add);
         }
 
-        function findAllSkillsForUser(userId, callback) {
+        function findAllSkillsForUser(userId, mode, callback) {
+            if (mode) {
+                mode = "mentor";
+            } else {
+                mode = "apprentice";
+            }
             var user_skills = [];
             var skills_len = skills.length;
             for (var i = 0; i < skills_len; i++) {
                 var skill = skills[i];
-                if (skill.userId === userId) {
+                if (skill.userId === userId && skill.mode === mode) {
                     user_skills.push(skill);
                 }
             }
@@ -53,7 +61,7 @@
         function updateSkillById(skillId, newSkill, callback) {
             // Update the specified skill
             var skill_to_update = findSkillIndexById(skillId);
-            var new_skill = {"title": newSkill.title, "level": newSkill.level,"userId": newSkill.userId, "_id": newSkill._id};
+            var new_skill = {"title": newSkill.title, "level": newSkill.level, "mode": newSkill.mode, "userId": newSkill.userId, "_id": newSkill._id};
             skills[skill_to_update] = new_skill;
             callback(new_skill);
         }

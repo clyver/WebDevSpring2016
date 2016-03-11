@@ -19,9 +19,8 @@
                 $rootScope.mentorMode = true;
                 $rootScope.apprenticeMode = false;
                 $rootScope.mode = "Taught Skills:";
-
             }
-
+            $rootScope.$emit('switchMode', []);
         }
     }
 

@@ -21,10 +21,12 @@
             })();
 
             function setSkills() {
-                SkillService.findAllSkillsForUser($rootScope.currentUser._id, function(res) {
+                SkillService.findAllSkillsForUser($rootScope.currentUser._id, $scope.mentorMode, function(res) {
                     $rootScope.user_skills = res;
                 });
             }
+
+            $rootScope.$on('switchMode', setSkills);
 
             function update(user) {
                 UserService.updateUser(user.id, user, function(res) {
@@ -34,17 +36,27 @@
 
             function addSkill(currentUser, skill) {
                 if (skill && skill.title && skill.level) {
+                    if ($scope.mentorMode) {
+                        skill.mode = "mentor";
+                    } else {
+                        skill.mode = "apprentice";
+                    }
                     SkillService.createSkillForUser(currentUser._id, skill, setSkills)
                 }
             }
 
-            function deleteSkill(skill) {
-                SkillService.deleteSkillById(skill.id, updateUserSkills)
+            function deleteSkill(skillId) {
+                SkillService.deleteSkillById(skillId, updateUserSkills)
             }
 
             function updateSkill(newSkill) {
                 // The form with the given ID has been selected by the user
                 // Update the skill the user selected, with this new form
+                if ($scope.mentorMode) {
+                    newSkill.mode = "mentor";
+                } else {
+                    newSkill.mode = "apprentice";
+                }
                 if (newSkill && newSkill.title && newSkill.level) {
                     SkillService.updateSkillById(newSkill._id, newSkill, updateUserSkills);
                 }
