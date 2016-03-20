@@ -9,7 +9,8 @@ module.exports = function() {
                findUserByCredentials: findUserByCredentials,
                deleteUser: deleteUser,
                updateUser: updateUser,
-               findUserByUsername: findUserByUsername};
+               findUserByUsername: findUserByUsername,
+               findUserById: findUserById};
     return api;
 
     function createUser(user) {
@@ -60,6 +61,20 @@ module.exports = function() {
         var user_to_update = findUserIndexById(userId);
         users[user_to_update] = user;
         return users;
+    }
+
+    function findUserById(id) {
+        // A helper to find the index of the user with the given id
+        var users_len = users.length;
+        var foundUser = null;
+        for (var i = 0; i < users_len; i++) {
+            var user = users[i];
+            if (user._id === id) {
+                foundUser = user;
+                break;
+            }
+        }
+        return foundUser;
     }
 
     function findUserIndexById(id) {
