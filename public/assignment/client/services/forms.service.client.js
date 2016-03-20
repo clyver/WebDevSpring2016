@@ -7,10 +7,7 @@
         .module("FormBuilderApp")
         .factory("FormService", FormService);
 
-    function FormService() {
-        var forms = [ {"_id": "000", "title": "Contacts", "userId": 123},
-                      {"_id": "010", "title": "ToDo",     "userId": 123},
-                      {"_id": "020", "title": "CDs",      "userId": 234}];
+    function FormService($http) {
 
         var service = {
             createFormForUser: createFormForUser,
@@ -22,68 +19,25 @@
 
         return service;
 
-        function createFormForUser(userId, form, callback) {
-            form._id = (new Date()).getTime();
-            form.userId = userId;
-            forms.push(form);
-            callback(form);
+        function createFormForUser(userId, form) {
+            return $http.post("/api/assignment/user/" + userId + "/form", form);
         }
 
-        function findAllFormsForUser(userId, callback) {
-            var user_forms = [];
-            var forms_len = forms.length;
-            for (var i = 0; i < forms_len; i++) {
-                var form = forms[i];
-                if (form.userId === userId) {
-                    user_forms.push(form);
-                }
-            }
-            callback(user_forms);
+        function findAllFormsForUser(userId) {
+            return $http.get("/api/assignment/user/" + userId + "/form");
         }
 
-        function deleteFormById(formId, callback) {
-            // Delete the given form from our list of forms
-            var form_to_delete = findFormIndexById(formId);
-            // Splice out the form_to_delete
-            forms.splice(form_to_delete, 1);
-            callback(forms);
+        function deleteFormById(formId) {
+            return $http.delete("/api/assignment/form/" + formId);
         }
 
-        function updateFormById(formId, newForm, callback) {
-            // Update the specified form
-            var form_to_update = findFormIndexById(formId);
-            var new_form = {"title": newForm.title, "userId": newForm.userId, "_id": newForm._id};
-            forms[form_to_update] = new_form;
-            callback(new_form);
+        function updateFormById(formId, newForm) {
+            return $http.put("/api/assignment/form/" + formId, newForm);
         }
 
-        function findFormById(id) {
-            var forms_len = forms.length;
-            var found_form = null;
 
-            for (var i = 0; i < forms_len; i++) {
-                var form = forms[i];
-                if (form._id === id) {
-                    found_form = form;
-                    break;
-                }
-            }
-            return found_form;
-
-        }
-
-        function findFormIndexById(id) {
-            // A helper to find the index of the form with the given id
-            var forms_len = forms.length;
-            var form_index = -1;
-            for (var i = 0; i < forms_len; i++) {
-                var form = forms[i];
-                if (form._id === id) {
-                    form_index = i;
-                    break;
-                }
-            }
-            return form_index;
+        function findFormById(formId) {
+            return $http.get("/api/assigntment/form/" + formId)
         }
     }
 })();
