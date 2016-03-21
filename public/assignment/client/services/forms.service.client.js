@@ -37,7 +37,7 @@
 
 
         function findFormById(formId) {
-            return $http.get("/api/assigntment/form/" + formId)
+            return $http.get("/api/assignment/form/" + formId)
         }
     }
 })();

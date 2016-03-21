@@ -29,7 +29,7 @@ module.exports = function() {
         var forms_len = forms.length;
         for (var i = 0; i < forms_len; i++) {
             var form = forms[i];
-            if (form.userId === userId) {
+            if (form.userId == userId) {
                 user_forms.push(form);
             }
         }
@@ -42,7 +42,7 @@ module.exports = function() {
 
         for (var i = 0; i < forms_len; i++) {
             var form = forms[i];
-            if (form.title === title) {
+            if (form.title == title) {
                 found_form = form;
                 break;
             }
@@ -72,7 +72,7 @@ module.exports = function() {
 
         for (var i = 0; i < forms_len; i++) {
             var form = forms[i];
-            if (form._id === id) {
+            if (form._id == id) {
                 found_form = form;
                 break;
             }
@@ -87,7 +87,7 @@ module.exports = function() {
         var form_index = -1;
         for (var i = 0; i < forms_len; i++) {
             var form = forms[i];
-            if (form._id === id) {
+            if (form._id == id) {
                 form_index = i;
                 break;
             }
