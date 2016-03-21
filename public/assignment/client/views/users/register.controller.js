@@ -15,10 +15,12 @@
             new_user._id = (new Date()).getTime();
             // I'll assume only a student registration
             new_user.roles =  ["student"];
-            UserService.createUser(new_user, function(res) {
-                $rootScope.currentUser = new_user;
-                $location.url("/profile");
-            });
+            UserService.createUser(new_user).then(
+                function (response) {
+                    $rootScope.currentUser = response.data;
+                    $location.url('/profile');
+                }
+            );
         }
     }
 })();

@@ -14,9 +14,8 @@ module.exports = function() {
     return api;
 
     function createUser(user) {
-        user._id = (new Date).getTime();
         users.push(user);
-        return users;
+        return user;
     }
 
     function findAllUsers() {
