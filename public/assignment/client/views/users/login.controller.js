@@ -14,8 +14,10 @@
         function login(user) {
             UserService.findUserByCredentials(user.username, user.password).then(
                 function (response) {
-                    $rootScope.currentUser = response.data;
-                    $location.url('/profile');
+                    if (response.data) {
+                        $rootScope.currentUser = response.data;
+                        $location.url('/profile');
+                    }
                 }
             );
         }

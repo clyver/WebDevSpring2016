@@ -59,7 +59,7 @@ module.exports = function() {
         // Update the specified user
         var user_to_update = findUserIndexById(userId);
         users[user_to_update] = user;
-        return users;
+        return user;
     }
 
     function findUserById(id) {
@@ -82,7 +82,7 @@ module.exports = function() {
         var user_index = -1;
         for (var i = 0; i < users_len; i++) {
             var user = users[i];
-            if (user._id === id) {
+            if (user._id == id) {
                 user_index = i;
                 break;
             }
