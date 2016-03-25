@@ -24,19 +24,24 @@
         }
 
         function addForm(newForm) {
-            var new_form = {"title": newForm.title};
-            FormService.createFormForUser($rootScope.currentUser._id, new_form).then(
-                function (response) {
-                    var new_form = response.data;
-                    setForms();
-                    $scope.editForm = {"title": new_form.title, "_id": new_form._id, "userId": new_form.userId};
-                }
-            );
-
+            if (newForm) {
+                var new_form = {"title": newForm.title};
+                FormService.createFormForUser($rootScope.currentUser._id, new_form).then(
+                    function (response) {
+                        var new_form = response.data;
+                        setForms();
+                        $scope.editForm = {
+                            "title": new_form.title, "_id": new_form._id,
+                            "forms": new_form.forms, "userId": new_form.userId
+                        };
+                    }
+                );
+            }
         }
 
-        function deleteForm(formId, formIndex) {
-            FormService.deleteFormById(formId, updateUserForms).then(
+        function deleteForm(formIndex) {
+            var form = $scope.user_forms[formIndex];
+            FormService.deleteFormById(form._id, updateUserForms).then(
                 function (response){
                     setForms();
                 }
@@ -53,17 +58,13 @@
             );
         }
 
-        function selectForm(formId, formIndex) {
-            FormService.findFormById(formId).then(
-                function (response) {
-                    var form = response.data;
-                    $scope.editForm = {
-                        "title": form.title,
-                        "userId": form.userId,
-                        "_id": form._id
-                    }
-                }
-            )
+        function selectForm(formIndex) {
+            var form = $scope.user_forms[formIndex];
+            $scope.editForm = {
+                "title": form.title,
+                "userId": form.userId,
+                "_id": form._id
+            }
         }
 
         (function init() {

@@ -23,16 +23,16 @@ module.exports = function(app, model) {
     }
 
     function deleteFormById(req, res) {
-        var formId = req.params._id;
-        var forms = model.deleteFormById(formId);
-        res.json(forms);
+        var formId = req.params.formId;
+        var form = model.deleteFormById(formId);
+        res.json(form);
     }
 
     function createFormForUser(req, res) {
         var user = req.params.userId;
         var newForm = req.body;
-        var forms = model.createFormForUser(user, newForm);
-        res.json(forms);
+        var form = model.createFormForUser(user, newForm);
+        res.json(form);
     }
 
     function updateFormById(req, res) {

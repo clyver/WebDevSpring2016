@@ -5,7 +5,7 @@
 (function () {
     angular
         .module("FormBuilderApp")
-        .factory("FieldService", FormService);
+        .factory("FieldService", FieldService);
 
     function FieldService($http) {
         var api = {
