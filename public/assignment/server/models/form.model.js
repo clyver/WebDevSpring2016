@@ -2,7 +2,6 @@
  * Created by christopherlyver on 3/20/16.
  */
 'use strict';
-// load mock data into forms
 var forms = require("./form.mock.json");
 
 module.exports = function () {
@@ -31,14 +30,14 @@ module.exports = function () {
     }
 
     function findAllFormsForUser(userId) {
-        var formsForUser = [];
+        var userForms = [];
         userId = userId;
         for (var i = 0; i < forms.length; i++) {
             if (forms[i].userId == userId) {
-                formsForUser.push(forms[i]);
+                userForms.push(forms[i]);
             }
         }
-        return formsForUser;
+        return userForms;
     }
 
     function deleteFormById(formId) {
@@ -55,7 +54,7 @@ module.exports = function () {
 
     function updateFormById(formId, newForm) {
         for (var i = 0; i < forms.length; i++) {
-            if (parseInt(forms[i]._id) === parseInt(formId)) {
+            if (forms[i]._id == formId) {
                 forms[i]._id = newForm._id;
                 forms[i].title = newForm.title;
                 forms[i].userId = newForm.userId;
@@ -68,7 +67,7 @@ module.exports = function () {
     function findFormByTitle(title) {
         var form = null;
         for (var i = 0; i < forms.length; i++) {
-            if (forms[i].title === title) {
+            if (forms[i].title == title) {
                 form = forms[i];
             }
         }
@@ -84,7 +83,7 @@ module.exports = function () {
         var form = findFormById(formId);
         var field = null;
         for (var i = 0; i < form.fields.length; i++) {
-            if (parseInt(form.fields[i]._id) === parseInt(fieldId)) {
+            if (form.fields[i]._id == fieldId) {
                 field = form.fields[i];
                 break;
             }
@@ -107,7 +106,7 @@ module.exports = function () {
         var form = findFormById(formId);
         var field = null;
         for (var i = 0; i < form.fields.length; i++) {
-            if (parseInt(form.fields[i]._id) === parseInt(fieldId)) {
+            if (form.fields[i]._id == fieldId) {
                 field = form.fields[i];
                 form.fields.splice(i, 1);
                 break;
@@ -125,7 +124,7 @@ module.exports = function () {
     function updateFieldByFormId(formId, field) {
         var form = findFormById(formId);
         for (var i = 0; i < form.fields.length; i++) {
-            if(parseInt(form.field[i]._id) === parseInt(field._id)){
+            if(form.field[i]._id == field._id){
                 form.field[i].label = field.label;
                 form.field[i].type = field.type;
                 form.field[i].placeholder = field.placeholder;
@@ -134,4 +133,4 @@ module.exports = function () {
         }
         return form.fields;
     }
-}
+};

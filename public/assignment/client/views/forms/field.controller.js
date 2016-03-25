@@ -7,13 +7,12 @@
         .controller("FieldController", FieldController);
 
     function FieldController($scope, $routeParams, FieldService) {
-        var uid = $routeParams["userId"];
-        var fid = $routeParams["formId"];
+        var formId = $routeParams["formId"];
         $scope.addField = addField;
         $scope.removeField = removeField;
 
         function init(){
-            FieldService.findFieldsForForm(fid)
+            FieldService.findFieldsForForm(formId)
                 .then(function (response) {
                     console.log(response.data);
                     $scope.fields = response.data;
@@ -22,42 +21,41 @@
 
         init();
 
-
         function removeField(index) {
             var field = $scope.fields[index];
-            FieldService.deleteFieldFromForm(fid, field._id)
+            FieldService.deleteFieldFromForm(formId, field._id)
                 .then(function (response) {
                     $scope.fields = response.data;
                 });
         }
 
-        function addField(fieldType) {
+        function addField(type) {
             var field = {
                 label: "",
                 placeholder: "",
-                fieldType: ""
+                type: ""
             };
 
-            if (fieldType === "TEXT") {
-                field.type = fieldType;
+            if (type === "TEXT") {
+                field.type = type;
                 field.label = "New Text Field";
                 field.placeholder = "New field";
             }
 
-            else if (fieldType === "TEXTAREA") {
-                field.type = fieldType;
+            else if (type === "TEXTAREA") {
+                field.type = type;
                 field.label = "New Text Field";
                 field.placeholder = "New field";
             }
 
-            else if (fieldType === "DATE") {
-                field.type = fieldType;
+            else if (type === "DATE") {
+                field.type = type;
                 field.label = "New Date field";
                 field.placeholder = "New field";
             }
 
-            else if (fieldType === "OPTIONS") {
-                field.type = fieldType;
+            else if (type === "OPTIONS") {
+                field.type = type;
                 field.label = "New Dropdown";
                 field.options = [{
                     "label": "Option D",
@@ -71,8 +69,8 @@
                 }]
             }
 
-            else if (fieldType === "CHECKBOX") {
-                field.type = fieldType;
+            else if (type === "CHECKBOX") {
+                field.type = type;
                 field.label = "New Checkboxes";
                 field.options = [{
                     "label": "Option A",
@@ -86,8 +84,8 @@
                 }]
             }
 
-            else if (fieldType === "RADIO") {
-                field.type = fieldType;
+            else if (type === "RADIO") {
+                field.type = type;
                 field.label = "New Radio buttons";
                 field.options = [{
                     "label": "Option X",
@@ -101,8 +99,7 @@
                 }]
             }
 
-            //   console.log(field);
-            FieldService.createFieldForForm(fid, field)
+            FieldService.createFieldForForm(formId, field)
                 .then(function (response) {
                     console.log(response.data);
                     $scope.fields = response.data;

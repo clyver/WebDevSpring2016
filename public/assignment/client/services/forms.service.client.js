@@ -35,7 +35,6 @@
             return $http.put("/api/assignment/form/" + formId, newForm);
         }
 
-
         function findFormById(formId) {
             return $http.get("/api/assignment/form/" + formId)
         }

@@ -48,4 +48,4 @@ module.exports = function (app, model) {
         var fields = model.updateFieldByFormId(formId, field);
         res.json(fields);
     }
-}
+};
