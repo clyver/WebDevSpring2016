@@ -1,8 +1,9 @@
 'use strict';
 
-var users = require('./user.mock.json');
 
-module.exports = function() {
+module.exports = function(mongoose, userSchema) {
+
+    var User = mongoose.model('User', userSchema);
 
     var api = {createUser: createUser,
                findAllUsers: findAllUsers,
@@ -14,80 +15,63 @@ module.exports = function() {
     return api;
 
     function createUser(user) {
-        users.push(user);
-        return user;
+        return User.create(user)
+            .then(function(doc) {
+                return doc();
+            })
     }
 
     function findAllUsers() {
-        return users;
+        return User.find({})
+            .then(function(doc) {
+                return doc;
+            });
     }
 
     function findUserByCredentials(username, password) {
         // Go through our users and return the user with the given credentials
-        var users_len = users.length;
-        for (var i = 0; i < users_len; i++) {
-            var user = users[i];
-            if (user.username == username && user.password == password) {
-                return user;
-                break;
-            }
-        }
+        return User.findOne({
+            username: username,
+            password: password
+        }).then(function(user) {
+            return user;
+        })
     }
 
     function findUserByUsername(username) {
         // Go through our users and return the user with the given username
-        var users_len = users.length;
-
-        for (var i = 0; i < users_len; i++) {
-            var user = users[i];
-            if (user.username == username) {
-                return user;
-                break;
-            }
-        }
+        return User.findOne({
+            username: username
+        }).then(function(user) {
+            return user;
+        });
     }
 
     function deleteUser(userId) {
         // Delete the given user from our list of users
-        var user_to_delete = findUserIndexById(userId);
-        // Splice out the user_to_kick
-        users.splice(user_to_delete, 1);
-        return users;
+        return User.findById(userId)
+            .then(function(user) {
+                user.remove();
+                return findAllUsers();
+            });
     }
 
     function updateUser(userId, user) {
         // Update the specified user
-        var user_to_update = findUserIndexById(userId);
-        users[user_to_update] = user;
-        return user;
+        return User.findOneAndUpdate(
+            {id: userId},
+            {$set: user},
+            {new: true}
+        ).then(function(doc){
+            return doc;
+        });
     }
 
     function findUserById(id) {
-        // A helper to find the index of the user with the given id
-        var users_len = users.length;
-        var foundUser = null;
-        for (var i = 0; i < users_len; i++) {
-            var user = users[i];
-            if (user._id === id) {
-                foundUser = user;
-                break;
-            }
-        }
-        return foundUser;
-    }
-
-    function findUserIndexById(id) {
-        // A helper to find the index of the user with the given id
-        var users_len = users.length;
-        var user_index = -1;
-        for (var i = 0; i < users_len; i++) {
-            var user = users[i];
-            if (user._id == id) {
-                user_index = i;
-                break;
-            }
-        }
-        return user_index;
+        return User.findUserById(id)
+            .then(function(user) {
+                return user;
+            })
     }
 };
 

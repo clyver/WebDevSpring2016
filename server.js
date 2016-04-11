@@ -1,5 +1,9 @@
 // Our barebones express server
 var express = require('express');
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/cs5610');
+
 var bodyParser = require('body-parser');
 var app = express();
 app.use(express.static(__dirname + '/public'));
