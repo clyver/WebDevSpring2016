@@ -14,8 +14,12 @@ module.exports = function(app, model) {
 
     function createUser(req, res) {
         var new_user = req.body;
-        new_user = model.createUser(new_user);
-        res.json(new_user);
+        model.createUser(new_user)
+            .then(function (user) {
+                res.json(user);
+            }, function (err) {
+                res.json({'error': err});
+            });
     }
 
     function updateUser(req, res) {
@@ -30,6 +34,8 @@ module.exports = function(app, model) {
                     res.json(doc);
                 },
                 function(err) {
+                    console.log("Service err:");
+                    console.log(err);
                     res.status(400).send(err);
                 }
             );
