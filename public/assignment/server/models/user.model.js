@@ -15,10 +15,16 @@ module.exports = function(mongoose, userSchema) {
     return api;
 
     function createUser(user) {
+        // TODO: Remove id generation in the client
+        delete user._id;
+
         return User.create(user)
-            .then(function(doc) {
-                return doc();
-            })
+            .then(function(user) {
+                    return user;
+                },
+                function(err) {
+                    console.log(err);
+                });
     }
 
     function findAllUsers() {
@@ -29,7 +35,6 @@ module.exports = function(mongoose, userSchema) {
     }
 
     function findUserByCredentials(username, password) {
-        // Go through our users and return the user with the given credentials
         return User.findOne({
             username: username,
             password: password
@@ -58,11 +63,8 @@ module.exports = function(mongoose, userSchema) {
 
     function updateUser(userId, user) {
         // Update the specified user
-        return User.findOneAndUpdate(
-            {id: userId},
-            {$set: user},
-            {new: true}
-        ).then(function(doc){
+        return User.findByIdAndUpdate(userId, user, {new: true})
+            .then(function(doc){
             return doc;
         });
     }
@@ -70,8 +72,11 @@ module.exports = function(mongoose, userSchema) {
     function findUserById(id) {
         return User.findUserById(id)
             .then(function(user) {
-                return user;
-            })
+                    return user;
+                },
+                function(err) {
+                    console.log(err);
+                });
     }
 };
 

@@ -21,8 +21,18 @@ module.exports = function(app, model) {
     function updateUser(req, res) {
         var userId = req.params.id;
         var user = req.body;
-        var updated_user = model.updateUser(userId, user);
-        res.json(updated_user);
+        //var updated_user = model.updateUser(userId, user);
+        //res.json(updated_user);
+
+        model.updateUser(userId, user)
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findAllUsers(req, res) {
@@ -45,8 +55,17 @@ module.exports = function(app, model) {
     function findUserByCredentials(req, res) {
         var username = req.params.username;
         var password = req.params.password;
-        var foundUser = model.findUserByCredentials(username, password);
-        res.json(foundUser);
+
+        model
+            .findUserByCredentials(username, password)
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function deleteUser(req, res) {
