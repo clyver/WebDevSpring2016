@@ -4,8 +4,9 @@
 'use strict';
 var forms = require("./form.mock.json");
 
-module.exports = function () {
-
+module.exports = function (mongoose, fieldSchema, formSchema) {
+    var Field = mongoose.model('Field', fieldSchema);
+    var Form = mongoose.model('Form', formSchema);
     var api = {
         createFormForUser: createFormForUser,
         findAllFormsForUser: findAllFormsForUser,
@@ -21,57 +22,43 @@ module.exports = function () {
 
     return api;
 
-    function createFormForUser(userId, newForm) {
-        newForm.fields = [];
-        newForm._id = (new Date).getTime();
-        newForm.userId = userId;
-        forms.push(newForm);
-        return newForm;
+    function createFormForUser(newForm) {
+        return Form.create(newForm)
+            .then(function(doc) {
+                return doc;
+            });
     }
 
     function findAllFormsForUser(userId) {
-        var userForms = [];
-        userId = userId;
-        for (var i = 0; i < forms.length; i++) {
-            if (forms[i].userId == userId) {
-                userForms.push(forms[i]);
-            }
-        }
-        return userForms;
+        return Form.find({userId: userId})
+            .then(function(doc) {
+                return doc;
+            });
     }
 
     function deleteFormById(formId) {
-        var userId = null;
-        for (var i = 0; i < forms.length; i++) {
-            if (forms[i]._id == formId) {
-                userId = forms[i].userId;
-                forms.splice(i, 1);
-                break;
-            }
-        }
-        return findAllFormsForUser(formId);
+        return Form.remove({_id: formId})
+            .then(function(doc) {
+                return doc;
+            });
     }
 
     function updateFormById(formId, newForm) {
-        for (var i = 0; i < forms.length; i++) {
-            if (forms[i]._id == formId) {
-                forms[i]._id = newForm._id;
-                forms[i].title = newForm.title;
-                forms[i].userId = newForm.userId;
-                break;
-            }
-        }
-        return findAllFormsForUser(newForm.userId);
+        return Form.findOneAndUpdate(
+            {_id: formId},
+            {$set: newForm},
+            {new: true}
+            )
+            .then(function(doc) {
+                return doc;
+            });
     }
 
     function findFormByTitle(title) {
-        var form = null;
-        for (var i = 0; i < forms.length; i++) {
-            if (forms[i].title == title) {
-                form = forms[i];
-            }
-        }
-        return form;
+        return Form.find({title: title})
+            .then(function(doc) {
+                return doc;
+            });
     }
 
     function findAllFieldsForForm(formId) {
@@ -92,14 +79,10 @@ module.exports = function () {
     }
 
     function findFormById(id) {
-        var form = null;
-        for (var i = 0; i < forms.length; i++) {
-            if (forms[i]._id == id) {
-                form = forms[i];
-                break;
-            }
-        }
-        return form;
+        return Form.find({_id: id})
+            .then(function(doc) {
+                return doc;
+            });
     }
 
     function deleteFieldByFormId(formId, fieldId) {
