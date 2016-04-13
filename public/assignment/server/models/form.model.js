@@ -62,8 +62,11 @@ module.exports = function (mongoose, fieldSchema, formSchema) {
     }
 
     function findAllFieldsForForm(formId) {
-        var form = findFormById(formId);
-        return form.fields;
+
+        return Form.findById(formId)
+            .then(function(doc) {
+                return doc.fields;
+            });
     }
 
     function findFieldByFormId(formId, fieldId) {
@@ -84,24 +87,52 @@ module.exports = function (mongoose, fieldSchema, formSchema) {
                 return doc;
             });
     }
+    //
+    //function deleteFieldByFormId(formId, fieldId) {
+    //    return Form.find({_id: formId})
+    //        .then(function(doc) {
+    //            console.log("Model deleting field in this form:");
+    //            console.log(doc);
+    //            console.log("");
+    //            console.log("Doc fields:");
+    //            console.log(doc[0].fields);
+    //            for(var i = 0; i < doc[0].fields.length;i++){
+    //                if(doc[0].fields[i]._id.toString() == fieldId){
+    //                    doc[0].fields.splice(i,1);
+    //                    break;
+    //                }
+    //            }
+    //            console.log("");
+    //            console.log("returning ");
+    //            console.log(doc);
+    //            doc.save();
+    //            return doc;
+    //        });
+    //}
 
     function deleteFieldByFormId(formId, fieldId) {
-        var form = findFormById(formId);
-        var field = null;
-        for (var i = 0; i < form.fields.length; i++) {
-            if (form.fields[i]._id == fieldId) {
-                field = form.fields[i];
-                form.fields.splice(i, 1);
-                break;
-            }
-        }
-        return form.fields;
+        return Form
+            .update(
+                {_id: formId},
+                // We must convert the fieldId to an ObjectId that Mongo can recognize
+                {$pull: {fields: {_id: mongoose.Types.ObjectId(fieldId)}}}
+            )
+            .then(function(doc) {
+                console.log(doc);
+                return doc;
+            });
     }
 
     function createFieldForForm(formId, field) {
-        var form = findFormById(formId);
-        form.fields.push(field);
-        return form.fields;
+        //var form = findFormById(formId);
+        //form.fields.push(field);
+        //return form.fields;
+
+        return Form.findById(formId)
+            .then(function(doc) {
+                doc.fields.push(field);
+                return doc.save();
+            });
     }
 
     function updateFieldByFormId(formId, field) {

@@ -25,7 +25,7 @@
             var field = $scope.fields[index];
             FieldService.deleteFieldFromForm(formId, field._id)
                 .then(function (response) {
-                    $scope.fields = response.data;
+                    init();
                 });
         }
 
@@ -102,7 +102,7 @@
             FieldService.createFieldForForm(formId, field)
                 .then(function (response) {
                     console.log(response.data);
-                    $scope.fields = response.data;
+                    init();
                 });
 
         }
