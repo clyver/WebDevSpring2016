@@ -12,7 +12,7 @@
         $scope.login = login;
 
         function login(user) {
-            UserService.findUserByCredentials(user.username, user.password).then(
+            UserService.login({username: user.username, password: user.password}).then(
                 function (response) {
                     if (response.data) {
                         $rootScope.currentUser = response.data;

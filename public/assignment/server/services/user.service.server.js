@@ -4,6 +4,9 @@
 'use strict';
 module.exports = function(app, model) {
 
+    var passport      = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+
     app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", findAllUsers);
     app.get("/api/assignment/user/:id", findUserById);
@@ -11,6 +14,104 @@ module.exports = function(app, model) {
     app.get("/api/assignment/user/username/:username/password/:password", findUserByCredentials);
     app.put("/api/assignment/user/:id", updateUser);
     app.delete("/api/assignment/user/:id", deleteUser);
+    app.post("/api/assignment/login", passport.authenticate('local'), login);
+    app.get("/api/loggedin", loggedin);
+    app.post("/api/assignment/logout", logout);
+    app.post("/api/assignment/user", register);
+
+    passport.use(new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+
+    function localStrategy(username, password, done) {
+        console.log("In localStrategy()");
+        console.log(password);
+        console.log(username);
+        model
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if (!user) { return done(null, false); }
+                    return done(null, user);
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        model
+            .findUserById(user._id)
+            .then(
+                function(user) {
+                    done(null, user);
+                },
+                function(err) {
+                    done(err, null);
+                }
+            );
+    }
+
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
+    }
+
+    function loggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+    function register(req, res) {
+        console.log(req.body);
+        var newUser = req.body;
+        if (newUser.roles.length === 0) {
+            newUser.roles = ['student'];
+        }
+
+        model
+            .findUserByUsername(newUser.username)
+            .then(
+                function(user) {
+                    if (user.length) {
+                        res.json(null);
+                    }
+                    else {
+                        return userModel.createUser(newUser);
+                    }
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function(user) {
+                    if (user) {
+                        req.login(user, function(err) {
+                            if (err) {
+                                res.status(400).send(err);
+                            }
+                            else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function logout(req, res) {
+        req.logOut();
+        res.send(200);
+    }
 
     function createUser(req, res) {
         var new_user = req.body;

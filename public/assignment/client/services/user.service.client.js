@@ -15,10 +15,20 @@
             createUser: createUser,
             deleteUser: deleteUser,
             updateUser: updateUser,
-            findUserByUsername: findUserByUsername
+            findUserByUsername: findUserByUsername,
+            login: login,
+            logout: logout
         };
 
         return service;
+
+        function login(user) {
+            return $http.post("/api/assignment/login", user);
+        }
+
+        function logout() {
+              return $http.post("/api/assignment/logout");
+        }
 
         function findUserByUsername(username) {
             return $http.get("/api/assignment/user/username/" + username);
