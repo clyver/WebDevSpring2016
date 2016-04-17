@@ -25,9 +25,6 @@ module.exports = function(app, model) {
 
 
     function localStrategy(username, password, done) {
-        console.log("In localStrategy()");
-        console.log(password);
-        console.log(username);
         model
             .findUserByCredentials(username, password)
             .then(

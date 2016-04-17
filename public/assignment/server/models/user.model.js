@@ -70,7 +70,7 @@ module.exports = function(mongoose, userSchema) {
     }
 
     function findUserById(id) {
-        return User.findUserById(id)
+        return User.findById(id)
             .then(function(user) {
                     return user;
                 },
