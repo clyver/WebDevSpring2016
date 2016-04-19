@@ -7,7 +7,6 @@ module.exports = function(app, model) {
     var passport      = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
 
-    app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", findAllUsers);
     app.get("/api/assignment/user/:id", findUserById);
     app.get("/api/assignment/user/username/:username", findUserByUsername);

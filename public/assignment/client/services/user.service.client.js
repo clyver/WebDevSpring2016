@@ -12,12 +12,12 @@
         var service = {
             findUserByCredentials: findUserByCredentials,
             findAllUsers: findAllUsers,
-            createUser: createUser,
             deleteUser: deleteUser,
             updateUser: updateUser,
             findUserByUsername: findUserByUsername,
             login: login,
-            logout: logout
+            logout: logout,
+            register: register
         };
 
         return service;
@@ -42,7 +42,7 @@
             return $http.get("/api/assignment/user");
         }
 
-        function createUser(user) {
+        function register(user) {
             return $http.post("/api/assignment/user", user);
         }
 
