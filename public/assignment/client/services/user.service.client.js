@@ -17,7 +17,8 @@
             findUserByUsername: findUserByUsername,
             login: login,
             logout: logout,
-            register: register
+            register: register,
+            createUser: createUser
         };
 
         return service;
@@ -44,6 +45,10 @@
 
         function register(user) {
             return $http.post("/api/assignment/user", user);
+        }
+
+        function createUser(user) {
+            return $http.post("/api/assignment/admin/user", user);
         }
 
         function deleteUser(userId) {

@@ -22,6 +22,18 @@
                         <a href="#" class="btn">
                             <scan class="glyphicon glyphicon-triangle-bottom"></scan>
                         </a>
+                        First Name
+                    </th>
+                    <th>
+                        <a href="#" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
+                        Last Name
+                    </th>
+                    <th>
+                        <a href="#" class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </a>
                         Role
                     </th>
                     <th>
@@ -32,11 +44,14 @@
                     </th>
                 </tr>
                 <tr>
-                    <td><input class="form-control" type="text" name="username" placeholder="Username"/></td>
-                    <td><input class="form-control" type="text" name="password" placeholder="Password"/></td>
-                    <td><input class="form-control" type="text" name="role" placeholder="role1, role2"/></td>
+                    <td><input class="form-control" ng-model="new_user.username" type="text" name="username" placeholder="Username"/></td>
+                    <td><input class="form-control" ng-model="new_user.password" type="text" name="password" placeholder="Password"/></td>
+                    <td><input class="form-control" ng-model="new_user.firstName" type="text" name="firstName" placeholder="First Name"/></td>
+                    <td><input class="form-control" ng-model="new_user.lastName" type="text" name="lastName" placeholder="Last Name"/></td>
+                    <td><input class="form-control" ng-model="new_user.roles" type="text" name="role" placeholder="role1, role2"/></td>
+
                     <td>
-                        <a href="#" class="btn btn-primary">
+                        <a href="#"  ng-click="register(new_user)" class="btn btn-primary">
                             <scan class="glyphicon glyphicon-plus"></scan>
                         </a>
                         <a href="#" class="btn btn-success">
@@ -46,41 +61,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Alice</td>
-                    <td></td>
-                    <td>Student</td>
-                    <td>
-                        <a href="#" class="btn btn-danger">
+                <tr ng-repeat="user in users">
+                    <td class="td-middle"><a>
+                        {{ user.username }} </a></td>
+                    <td class="td-middle"><a>
+                        {{ user.password }} </a></td>
+                    <td class="td-middle"><a>
+                        {{ user.firstName }} </a></td>
+                    <td class="td-middle"><a>
+                        {{ user.lastName }} </a></td>
+                    <td class="td-middle"><a>
+                        {{ user.roles }} </a></td>
+                    <td class="text-nowrap">
+                        <a ng-click="deleteForm($index)" class="btn btn-danger">
                             <scan class="glyphicon glyphicon-remove"></scan>
                         </a>
-                        <a href="#" class="btn btn-warning">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Bob</td>
-                    <td></td>
-                    <td>Faculty | Admin</td>
-                    <td>
-                        <a href="#" class="btn btn-danger">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#" class="btn btn-warning">
-                            <scan class="glyphicon glyphicon-pencil"></scan>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Charlie</td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a href="#" class="btn btn-danger">
-                            <scan class="glyphicon glyphicon-remove"></scan>
-                        </a>
-                        <a href="#" class="btn btn-warning">
+                        <a ng-click="selectForm($index)" class="btn btn-warning">
                             <scan class="glyphicon glyphicon-pencil"></scan>
                         </a>
                     </td>

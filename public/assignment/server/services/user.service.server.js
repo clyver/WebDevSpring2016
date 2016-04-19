@@ -17,6 +17,7 @@ module.exports = function(app, model) {
     app.get("/api/loggedin", loggedin);
     app.post("/api/assignment/logout", logout);
     app.post("/api/assignment/user", register);
+    app.post("/api/assignment/admin/user", createUser);
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -139,8 +140,15 @@ module.exports = function(app, model) {
     }
 
     function findAllUsers(req, res) {
-        var allUsers = model.findAllUsers();
-        res.json(allUsers);
+        var users = model.findAllUsers()
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findUserById(req, res) {

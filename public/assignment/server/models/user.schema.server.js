@@ -11,7 +11,8 @@
             'firstName': String,
             'lastName': String,
             'emails': [String],
-            'phones': [String]
+            'phones': [String],
+            'roles': [String],
         }, {'collection': 'user'});
         return userSchema;
     };
