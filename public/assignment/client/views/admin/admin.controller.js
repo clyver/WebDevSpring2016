@@ -8,14 +8,17 @@
 
         $scope.init = init;
         $scope.register = register;
+        $scope.deleteUser = deleteUser;
 
         function init() {
             UserService.findAllUsers().then(
                 function(response) {
-                    $rootScope.users = response.data;
+                    $scope.users = response.data;
                 }
             );
         }
+
+        init();
 
         function register(new_user) {
             new_user._id = (new Date()).getTime();
@@ -29,7 +32,10 @@
             );
         }
 
-        init();
+        function deleteUser(userIndex) {
+            //var user = $scope.u
+            return 5;
+        }
 
     }
 })();
