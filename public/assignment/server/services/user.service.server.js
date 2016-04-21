@@ -67,7 +67,7 @@ module.exports = function(app, model) {
     function register(req, res) {
         console.log(req.body);
         var newUser = req.body;
-        if (newUser.roles.length === 0) {
+        if (!newUser.roles) {
             newUser.roles = ['student'];
         }
 
@@ -75,11 +75,11 @@ module.exports = function(app, model) {
             .findUserByUsername(newUser.username)
             .then(
                 function(user) {
-                    if (user.length) {
+                    if (user) {
                         res.json(null);
                     }
                     else {
-                        return userModel.createUser(newUser);
+                        return model.createUser(newUser);
                     }
                 },
                 function(err) {

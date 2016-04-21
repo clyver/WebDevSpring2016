@@ -16,11 +16,13 @@ module.exports = function(mongoose, userSchema) {
 
     function createUser(user) {
         // TODO: Remove id generation in the client
-        delete user._id;
+        if (user._id) {
+            delete user._id;
+        }
 
         return User.create(user)
-            .then(function(user) {
-                    return user;
+            .then(function(new_user) {
+                    return new_user;
                 },
                 function(err) {
                     console.log(err);
