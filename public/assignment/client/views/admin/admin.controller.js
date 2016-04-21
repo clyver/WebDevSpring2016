@@ -4,7 +4,7 @@
         .module("FormBuilderApp")
         .controller("AdminController", AdminController);
 
-    function AdminController($scope, $location, $rootScope, UserService) {
+    function AdminController($scope, $location, UserService) {
 
         $scope.init = init;
         $scope.register = register;
@@ -23,7 +23,9 @@
         function register(new_user) {
             new_user._id = (new Date()).getTime();
             // I'll assume only a student registration
-            new_user.roles =  new_user.roles.split(", ");
+            if (new_user.roles) {
+                new_user.roles = new_user.roles.split(", ");
+            }
             UserService.createUser(new_user).then(
                 function (response) {
                     init();
@@ -33,8 +35,14 @@
         }
 
         function deleteUser(userIndex) {
-            //var user = $scope.u
-            return 5;
+            var user = $scope.users[userIndex];
+            UserService.deleteUser(user._id).then(
+                function (response) {
+                    init();
+                    $location.url('admin');
+                }
+            )
+
         }
 
     }

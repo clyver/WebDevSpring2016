@@ -112,6 +112,10 @@ module.exports = function(app, model) {
 
     function createUser(req, res) {
         var new_user = req.body;
+
+        if (!new_user.roles) {
+            new_user.roles = ['student'];
+        }
         model.createUser(new_user)
             .then(function (user) {
                 res.json(user);
@@ -180,7 +184,7 @@ module.exports = function(app, model) {
     }
 
     function deleteUser(req, res) {
-        var userId = req.params._id;
+        var userId = req.params.id;
         var deletedUser = model.deleteUser(userId);
         res.json(deletedUser);
     }
