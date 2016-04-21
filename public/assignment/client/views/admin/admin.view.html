@@ -44,17 +44,17 @@
                     </th>
                 </tr>
                 <tr>
-                    <td><input class="form-control" ng-model="new_user.username" type="text" name="username" placeholder="Username"/></td>
-                    <td><input class="form-control" ng-model="new_user.password" type="text" name="password" placeholder="Password"/></td>
-                    <td><input class="form-control" ng-model="new_user.firstName" type="text" name="firstName" placeholder="First Name"/></td>
-                    <td><input class="form-control" ng-model="new_user.lastName" type="text" name="lastName" placeholder="Last Name"/></td>
-                    <td><input class="form-control" ng-model="new_user.roles" type="text" name="role" placeholder="role1, role2"/></td>
+                    <td><input class="form-control" ng-model="edit_user.username" type="text" name="username" placeholder="Username"/></td>
+                    <td><input class="form-control" ng-model="edit_user.password" type="text" name="password" placeholder="Password"/></td>
+                    <td><input class="form-control" ng-model="edit_user.firstName" type="text" name="firstName" placeholder="First Name"/></td>
+                    <td><input class="form-control" ng-model="edit_user.lastName" type="text" name="lastName" placeholder="Last Name"/></td>
+                    <td><input class="form-control" ng-model="edit_user.roles" type="text" name="role" placeholder="role1, role2"/></td>
 
                     <td>
-                        <a href="#"  ng-click="register(new_user)" class="btn btn-primary">
+                        <a href="#"  ng-click="register(edit_user)" class="btn btn-primary">
                             <scan class="glyphicon glyphicon-plus"></scan>
                         </a>
-                        <a href="#" class="btn btn-success">
+                        <a href="#" ng-click="updateUser(edit_user)" class="btn btn-success">
                             <scan class="glyphicon glyphicon-ok"></scan>
                         </a>
                     </td>
