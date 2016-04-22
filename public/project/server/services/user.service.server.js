@@ -1,13 +1,15 @@
 /**
  * Created by christopherlyver on 4/22/16.
  */
+
+'use strict';
 module.exports = function(app, model) {
 
-    app.get("/api/assignment/user/username/:username/password/:password", findUserByCredentials);
-    app.get("/api/assignment/user", findAllUsers);
-    app.post("/api/assignment/admin/user", createUser);
-    app.delete("/api/assignment/user/:id", deleteUser);
-    app.put("/api/assignment/user/:id", updateUser);
+    app.get("/api/project/user/username/:username/password/:password", findUserByCredentials);
+    app.get("/api/project/user", findAllUsers);
+    app.post("/api/project/admin/user", createUser);
+    app.delete("/api/project/user/:id", deleteUser);
+    app.put("/api/project/user/:id", updateUser);
 
 
     function createUser(req, res) {
@@ -59,16 +61,11 @@ module.exports = function(app, model) {
         var username = req.params.username;
         var password = req.params.password;
 
-        model
-            .findUserByCredentials(username, password)
-            .then(
-                function(doc) {
-                    res.json(doc);
-                },
-                function(err) {
-                    res.status(400).send(err);
-                }
-            );
+        var user = model.findUserByCredentials(username, password);
+        console.log("Found user:");
+        console.log(user);
+        res.json(user);
+
     }
 
     function deleteUser(req, res) {

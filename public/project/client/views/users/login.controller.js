@@ -12,12 +12,15 @@
         $scope.login = login;
 
         function login(user) {
-            UserService.findUserByCredentials(user.username, user.password, function(res) {
-                if (res) {
-                    $rootScope.currentUser = res;
-                    $location.url('/profile');
+
+            UserService.findUserByCredentials(user.username, user.password).then(
+                function (response) {
+                    if (response.data) {
+                        $rootScope.currentUser = response.data;
+                        $location.url('/profile');
+                    }
                 }
-            });
+            );
         }
     }
 })();
