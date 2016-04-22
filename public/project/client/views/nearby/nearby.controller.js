@@ -11,9 +11,13 @@
         $scope.getNearbyUsers = getNearbyUsers;
 
         function getNearbyUsers() {
-            UserService.findAllUsers(function(res) {
-                $scope.nearbyUsers = res;
-            })
+            UserService.findAllUsers().then(
+                function (response) {
+                    if (response.data) {
+                        $scope.nearbyUsers = response.data;
+                    }
+                }
+            )
         }
 
         (function init() {

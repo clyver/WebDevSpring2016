@@ -22,11 +22,15 @@
             }
 
             // Only register the user if they select at least one role
-            if (new_user.roles) {
-                UserService.createUser(new_user, function (res) {
-                    $rootScope.currentUser = new_user;
-                    $location.url("/profile");
-                });
+            if (new_user.roles.length) {
+                UserService.createUser(new_user).then(
+                    function (response) {
+                        if (response.data) {
+                            $rootScope.currentUser = new_user;
+                            $location.url("/profile");
+                        }
+                    }
+                );
             }
         }
     }

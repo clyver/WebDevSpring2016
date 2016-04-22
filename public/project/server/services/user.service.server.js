@@ -15,46 +15,22 @@ module.exports = function(app, model) {
     function createUser(req, res) {
         var new_user = req.body;
 
-        if (!new_user.roles) {
-            new_user.roles = ['student'];
-        }
-        model.createUser(new_user)
-            .then(function (user) {
-                res.json(user);
-            }, function (err) {
-                res.json({'error': err});
-            });
+        var created_user = model.createUser(new_user);
+        res.json(created_user);
+
     }
 
     function updateUser(req, res) {
         var userId = req.params.id;
         var user = req.body;
-        //var updated_user = model.updateUser(userId, user);
-        //res.json(updated_user);
+        var updated_user = model.updateUser(userId, user);
+        res.json(updated_user);
 
-        model.updateUser(userId, user)
-            .then(
-                function(doc) {
-                    res.json(doc);
-                },
-                function(err) {
-                    console.log("Service err:");
-                    console.log(err);
-                    res.status(400).send(err);
-                }
-            );
     }
 
     function findAllUsers(req, res) {
-        var users = model.findAllUsers()
-            .then(
-                function(doc) {
-                    res.json(doc);
-                },
-                function(err) {
-                    res.status(400).send(err);
-                }
-            );
+        var users = model.findAllUsers();
+        res.json(users);
     }
 
     function findUserByCredentials(req, res) {
@@ -62,8 +38,6 @@ module.exports = function(app, model) {
         var password = req.params.password;
 
         var user = model.findUserByCredentials(username, password);
-        console.log("Found user:");
-        console.log(user);
         res.json(user);
 
     }

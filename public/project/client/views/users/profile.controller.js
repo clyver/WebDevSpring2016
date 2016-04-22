@@ -29,9 +29,11 @@
             $rootScope.$on('switchMode', setSkills);
 
             function update(user) {
-                UserService.updateUser(user.id, user, function(res) {
-                    $rootScope.currentUser = user;
-                });
+                UserService.updateUser(user._id, user).then(
+                    function(response) {
+                        $rootScope.currentUser = response.data;
+                    }
+                );
             }
 
             function addSkill(currentUser, skill) {
