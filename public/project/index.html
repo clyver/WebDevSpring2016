@@ -15,29 +15,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src="views/main/main.controller.js"></script>
-    <script src="views/sidebar/sidebar.view.html"></script>
-    <script src="views/sidebar/sidebar.controller.js"></script>
-    <script src="views/header/header.controller.js"></script>
-    <script src="views/users/login.controller.js"></script>
-    <script src="views/users/register.controller.js"></script>
-    <script src="services/skills.service.client.js"></script>
-    <script src="services/user.service.client.js"></script>
-    <script src="services/meetup.service.client.js"></script>
-    <script src="views/meetup/meetup.controller.js"></script>
-    <script src="views/users/profile.controller.js"></script>
-    <script src="views/nearby/nearby.controller.js"></script>
-    <link href="views/css/dashboard.css" rel="stylesheet">
+    <script src="client/views/main/main.controller.js"></script>
+    <script src="client/views/sidebar/sidebar.view.html"></script>
+    <script src="client/views/sidebar/sidebar.controller.js"></script>
+    <script src="client/views/header/header.controller.js"></script>
+    <script src="client/views/users/login.controller.js"></script>
+    <script src="client/views/users/register.controller.js"></script>
+    <script src="client/services/skills.service.client.js"></script>
+    <script src="client/services/user.service.client.js"></script>
+    <script src="client/services/meetup.service.client.js"></script>
+    <script src="client/views/meetup/meetup.controller.js"></script>
+    <script src="client/views/users/profile.controller.js"></script>
+    <script src="client/views/nearby/nearby.controller.js"></script>
+    <link href="client/views/css/dashboard.css" rel="stylesheet">
     <title>SkillSharer</title>
 </head>
 
 
 <body ng-controller="MainController">
-<div ng-include src="'views/header/header.view.html'"></div>
+<div ng-include src="'client/views/header/header.view.html'"></div>
 
 <div class="container-fluid">
     <div class="row">
-        <div ng-show="currentUser" ng-include src="'views/sidebar/sidebar.view.html'"></div>
+        <div ng-show="currentUser" ng-include src="'client/views/sidebar/sidebar.view.html'"></div>
         <div ng-view>
         </div>
     </div>

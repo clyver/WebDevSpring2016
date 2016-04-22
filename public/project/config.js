@@ -10,30 +10,30 @@
     function config($routeProvider) {
         $routeProvider
             .when('/home', {
-                templateUrl: 'views/home/home.view.html'
+                templateUrl: 'client/views/home/home.view.html'
             })
             .when('/profile', {
-                templateUrl: 'views/users/profile.view.html',
+                templateUrl: 'client/views/users/profile.view.html',
                 controller: 'ProfileController'
             })
             .when('/meetup', {
-                templateUrl: 'views/meetup/meetup.view.html',
+                templateUrl: 'client/views/meetup/meetup.view.html',
                 controller:  'MeetupController'
             })
             .when('/feedback', {
-                templateUrl: 'views/feedback/feedback.view.html',
+                templateUrl: 'client/views/feedback/feedback.view.html',
 
             })
             .when('/nearby', {
-                templateUrl: 'views/nearby/nearby.view.html',
+                templateUrl: 'client/views/nearby/nearby.view.html',
                 controller: 'NearbyController'
             })
             .when('/register', {
-                templateUrl: 'views/users/register.view.html',
+                templateUrl: 'client/views/users/register.view.html',
                 controller: 'RegisterController'
             })
             .when('/login', {
-                templateUrl: 'views/users/login.view.html',
+                templateUrl: 'client/views/users/login.view.html',
                 controller: 'LoginController'
             })
             .otherwise({
