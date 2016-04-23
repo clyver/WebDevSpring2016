@@ -60,7 +60,11 @@
             }
 
             function deleteSkill(skillId) {
-                SkillService.deleteSkillById(skillId, updateUserSkills)
+                SkillService.deleteSkillById(skillId).then(
+                    function (response) {
+                        updateUserSkills(response);
+                    }
+                )
             }
 
             function updateSkill(newSkill) {

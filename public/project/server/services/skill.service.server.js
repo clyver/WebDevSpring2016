@@ -21,17 +21,14 @@ module.exports = function(app, model) {
     function findAllSkillsForUser(req, res) {
         var user = req.body;
         var user_skills = model.findAllSkillsForUser(user);
-        console.log(user_skills);
         res.json(user_skills);
 
     }
 
-    function deleteSkillById(skillId) {
-        // Delete the given skill from our list of skills
-        var skill_to_delete = findSkillIndexById(skillId);
-        // Splice out the skill_to_delete
-        skills.splice(skill_to_delete, 1);
-        return skills;
+    function deleteSkillById(req, res) {
+        var skillId = req.params.id;
+        var reduced_skills =  model.deleteSkillById(skillId);
+        res.json(reduced_skills);
     }
 
     function updateSkillById(skillId, newSkill) {

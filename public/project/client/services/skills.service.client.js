@@ -40,12 +40,8 @@
             return $http.post("/api/project/userSkills/", user)
         }
 
-        function deleteSkillById(skillId, callback) {
-            // Delete the given skill from our list of skills
-            var skill_to_delete = findSkillIndexById(skillId);
-            // Splice out the skill_to_delete
-            skills.splice(skill_to_delete, 1);
-            callback(skills);
+        function deleteSkillById(skillId) {
+            return $http.delete("/api/project/skill/" + skillId)
         }
 
         function updateSkillById(skillId, newSkill, callback) {
