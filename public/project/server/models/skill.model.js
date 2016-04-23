@@ -63,7 +63,7 @@ module.exports = function() {
 
         for (var i = 0; i < skills_len; i++) {
             var skill = skills[i];
-            if (skill._id === id) {
+            if (skill._id == id) {
                 found_skill = skill;
                 break;
             }
