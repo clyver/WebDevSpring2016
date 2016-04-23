@@ -8,6 +8,7 @@ var users = require('./user.mock.json');
 module.exports = function() {
 
     var api = {
+        findUserById: findUserById,
         createUser: createUser,
         findAllUsers: findAllUsers,
         findUserByCredentials: findUserByCredentials,
@@ -15,6 +16,20 @@ module.exports = function() {
         updateUser: updateUser
     };
     return api;
+
+    function findUserById(userId) {
+        var users_len = users.length;
+        var foundUser = null;
+        for (var i = 0; i < users_len; i++) {
+            var user = users[i];
+            console.log(user);
+            if (user._id == userId) {
+                foundUser = user;
+                break;
+            }
+        }
+        return foundUser;
+    }
 
     function createUser(user) {
         users.push(user);

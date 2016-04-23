@@ -10,6 +10,7 @@
     function UserService($http) {
 
         var service = {
+            findUserById: findUserById,
             findUserByCredentials: findUserByCredentials,
             findAllUsers: findAllUsers,
             createUser: createUser,
@@ -37,6 +38,10 @@
 
         function updateUser(userId, user) {
             return $http.put("/api/project/user/" + userId, user);
+        }
+
+        function findUserById(userId) {
+            return $http.get("/api/project/user/" + userId);
         }
 
     }
