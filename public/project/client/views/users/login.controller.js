@@ -13,7 +13,7 @@
 
         function login(user) {
 
-            UserService.findUserByCredentials(user.username, user.password).then(
+            UserService.findUserByCredentials("alice", "alice").then(
                 function (response) {
                     if (response.data) {
                         $rootScope.currentUser = response.data;
