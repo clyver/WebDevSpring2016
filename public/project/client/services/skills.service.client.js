@@ -7,7 +7,7 @@
         .module("SkillSharer")
         .factory("SkillService", SkillService);
 
-    function SkillService() {
+    function SkillService($http) {
         var skills = [ {"_id": "000", "title": "birdwatching", "level": "novice", "mode": "mentor", "userId": 123},
                        {"_id": "010", "title": "surfing", "level": "Advanced", "mode": "mentor", "userId": 123},
                        {"_id": "020","title": "coding", "level": "Professional", "mode": "mentor", "userId": 234},
@@ -25,29 +25,19 @@
 
         return service;
 
-        function createSkillForUser(userId, skill, callback) {
+        function createSkillForUser(userId, skill) {
             skill._id = (new Date()).getTime();
             skill.userId = userId;
-            var skill_to_add = {"_id": skill._id, "title": skill.title, "level": skill.level, "mode": skill.mode, "userId": skill.userId};
-            skills.push(skill_to_add);
-            callback(skill_to_add);
+
+            var new_skill = {"_id": skill._id, "title": skill.title, "level": skill.level,
+                "taught": skill.taught, "sought": skill.sought,  "userId": skill.userId};
+
+            return $http.post("/api/project/skill/", new_skill);
         }
 
-        function findAllSkillsForUser(userId, mode, callback) {
-            if (mode) {
-                mode = "mentor";
-            } else {
-                mode = "apprentice";
-            }
-            var user_skills = [];
-            var skills_len = skills.length;
-            for (var i = 0; i < skills_len; i++) {
-                var skill = skills[i];
-                if (skill.userId === userId && skill.mode === mode) {
-                    user_skills.push(skill);
-                }
-            }
-            callback(user_skills);
+        function findAllSkillsForUser(userId, mentorMode, apprenticeMode) {
+            var user = {"userId": userId, "mentorMode": mentorMode, "apprenticeMode": apprenticeMode};
+            return $http.post("/api/project/userSkills/", user)
         }
 
         function deleteSkillById(skillId, callback) {

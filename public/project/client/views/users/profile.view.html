@@ -66,7 +66,7 @@
                     <td><input ng-model="editSkill.title" class="form-control" type="text" name="skillName" placeholder="Skill Name"/></td>
                     <td><input ng-model="editSkill.level" class="form-control" type="text" name="skillLevel" placeholder="Skill Level"/></td>
                     <td>
-                        <a ng-click="addSkill(currentUser, editSkill)" class="btn btn-primary">
+                        <a ng-click="addSkill(editSkill)" class="btn btn-primary">
                             <scan class="glyphicon glyphicon-plus"></scan>
                         </a>
                         <a ng-click="updateSkill(editSkill)" class="btn btn-success">

@@ -21,9 +21,11 @@
             })();
 
             function setSkills() {
-                SkillService.findAllSkillsForUser($rootScope.currentUser._id, $scope.mentorMode, function(res) {
-                    $rootScope.user_skills = res;
-                });
+                SkillService.findAllSkillsForUser($rootScope.currentUser._id, $scope.mentorMode, $scope.apprenticeMode).then(
+                    function(res) {
+                    $rootScope.user_skills = res.data;
+                }
+                );
             }
 
             $rootScope.$on('switchMode', setSkills);
@@ -36,14 +38,24 @@
                 );
             }
 
-            function addSkill(currentUser, skill) {
+            function addSkill(skill) {
+
                 if (skill && skill.title && skill.level) {
+                    skill.taught = false;
+                    skill.sought = false;
+
                     if ($scope.mentorMode) {
-                        skill.mode = "mentor";
-                    } else {
-                        skill.mode = "apprentice";
+                        skill.taught = true;
                     }
-                    SkillService.createSkillForUser(currentUser._id, skill, setSkills)
+                    if ($scope.apprenticeMode) {
+                        skill.sought = true;
+                    }
+
+                    SkillService.createSkillForUser($scope.currentUser._id, skill).then(
+                        function (response) {
+                            updateUserSkills(response);
+                        }
+                    )
                 }
             }
 
