@@ -31,26 +31,16 @@ module.exports = function(app, model) {
         res.json(reduced_skills);
     }
 
-    function updateSkillById(skillId, newSkill) {
-        // Update the specified skill
-        var skill_to_update = findSkillIndexById(skillId);
-        var new_skill = {"title": newSkill.title, "level": newSkill.level, "mode": newSkill.mode, "userId": newSkill.userId, "_id": newSkill._id};
-        skills[skill_to_update] = new_skill;
-        return new_skill;
+    function updateSkillById(req, res) {
+        var newSkill = req.body;
+        var skills = model.updateSkillById(newSkill._id, newSkill);
+        res.json(skills)
     }
 
-    function findSkillById(id) {
-        var skills_len = skills.length;
-        var found_skill = null;
-
-        for (var i = 0; i < skills_len; i++) {
-            var skill = skills[i];
-            if (skill._id === id) {
-                found_skill = skill;
-                break;
-            }
-        }
-        return found_skill;
+    function findSkillById(req, res) {
+        var skillId = req.params.skillId;
+        var skill = model.findSkillById(skillId);
+        res.json(skill);
 
     }
 

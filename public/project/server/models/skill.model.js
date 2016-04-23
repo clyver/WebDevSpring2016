@@ -53,9 +53,8 @@ module.exports = function() {
     function updateSkillById(skillId, newSkill) {
         // Update the specified skill
         var skill_to_update = findSkillIndexById(skillId);
-        var new_skill = {"title": newSkill.title, "level": newSkill.level, "mode": newSkill.mode, "userId": newSkill.userId, "_id": newSkill._id};
-        skills[skill_to_update] = new_skill;
-        return new_skill;
+        skills[skill_to_update] = newSkill;
+        return skills;
     }
 
     function findSkillById(id) {
