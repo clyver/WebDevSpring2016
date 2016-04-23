@@ -24,10 +24,7 @@
             skill._id = (new Date()).getTime();
             skill.userId = userId;
 
-            var new_skill = {"_id": skill._id, "title": skill.title, "level": skill.level,
-                "taught": skill.taught, "sought": skill.sought,  "userId": skill.userId};
-
-            return $http.post("/api/project/skill/", new_skill);
+            return $http.post("/api/project/skill/", skill);
         }
 
         function findAllSkillsForUser(userId, mentorMode, apprenticeMode) {
