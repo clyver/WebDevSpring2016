@@ -16,43 +16,81 @@ module.exports = function(app, model) {
     function createUser(req, res) {
         var new_user = req.body;
 
-        var created_user = model.createUser(new_user);
-        res.json(created_user);
+        model.createUser(new_user)
+            .then(function (user) {
+                res.json(user);
+            }, function (err) {
+                res.json({'error': err});
+            });
 
     }
 
     function updateUser(req, res) {
         var userId = req.params.id;
-        var user = req.body;
-        var updated_user = model.updateUser(userId, user);
-        res.json(updated_user);
+        var thisUser = req.body;
+
+        model.updateUser(userId, thisUser)
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
 
     }
 
     function findAllUsers(req, res) {
-        var users = model.findAllUsers();
-        res.json(users);
+        model.findAllUsers()
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findUserByCredentials(req, res) {
         var username = req.params.username;
         var password = req.params.password;
 
-        var user = model.findUserByCredentials(username, password);
-        res.json(user);
+        model.findUserByCredentials(username, password)
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
 
     }
 
     function deleteUser(req, res) {
         var userId = req.params.id;
-        var deletedUser = model.deleteUser(userId);
-        res.json(deletedUser);
+        model.deleteUser(userId).then(
+            function(doc) {
+                res.json(doc);
+            },
+            function(err) {
+                res.status(400).send(err);
+            }
+        );
     }
 
     function findUserById(req, res) {
-        console.log("finding User");
-        var userId = req.params.userId;
-        var foundUser = model.findUserById(userId);
-        res.json(foundUser);
+        var userId = req.params._id;
+        model.findUserById(userId).then(
+            function(doc) {
+                res.json(doc);
+            },
+            function(err) {
+                res.status(400).send(err);
+            }
+        );
+        res.json(found_user)
     }
 };

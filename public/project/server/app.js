@@ -3,9 +3,10 @@
  */
 (function() {
     'use strict';
-    module.exports = function (app) {
+    module.exports = function (app, mongoose) {
         // User things
-        var userModel = require(__dirname + '/models/user.model.js')();
+        var userSchema = require(__dirname + '/models/user.schema.server.js')(mongoose);
+        var userModel = require(__dirname + '/models/user.model.js')(mongoose, userSchema);
         require(__dirname + '/services/user.service.server.js')(app, userModel);
 
         // Skill things
