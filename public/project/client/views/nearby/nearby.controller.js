@@ -6,22 +6,20 @@
         .module("SkillSharer")
         .controller("NearbyController", NearbyController);
 
-    function NearbyController($scope, UserService) {
+    function NearbyController($scope, SkillService) {
 
-        $scope.getNearbyUsers = getNearbyUsers;
-
-        function getNearbyUsers() {
-            UserService.findAllUsers().then(
+        function getNearbySkills() {
+            SkillService.findAllSkills().then(
                 function (response) {
                     if (response.data) {
-                        $scope.nearbyUsers = response.data;
+                        $scope.nearbySkills = response.data;
                     }
                 }
-            )
+            );
         }
 
         (function init() {
-            getNearbyUsers();
+            getNearbySkills();
         })();
 
     }

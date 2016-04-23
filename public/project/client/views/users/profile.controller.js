@@ -41,6 +41,7 @@
             function addSkill(skill) {
 
                 if (skill && skill.title && skill.level) {
+                    skill.email = $rootScope.currentUser.email;
                     skill.taught = false;
                     skill.sought = false;
 

@@ -8,6 +8,7 @@ var skills = require('./skill.mock.json');
 module.exports = function() {
 
     var service = {
+        findAllSkills: findAllSkills,
         createSkill: createSkill,
         findAllSkillsForUser: findAllSkillsForUser,
         deleteSkillById: deleteSkillById,
@@ -15,6 +16,10 @@ module.exports = function() {
         findSkillById: findSkillById
     };
     return service;
+
+    function findAllSkills() {
+        return skills;
+    }
 
     function createSkill(new_skill) {
         skills.push(new_skill);

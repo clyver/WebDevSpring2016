@@ -5,12 +5,17 @@
 module.exports = function(app, model) {
 
     var url = require('url');
+    app.get("/api/project/skill", findAllSkills);
     app.post("/api/project/skill/", createSkill);
     app.post("/api/project/userSkills/", findAllSkillsForUser);
     app.get("/api/project/skill/:skillId", findSkillById);
     app.delete("/api/project/skill/:id", deleteSkillById);
     app.put("/api/project/skill/:skillId", updateSkillById);
 
+    function findAllSkills(req, res) {
+        var skills = model.findAllSkills();
+        res.json(skills);
+    }
 
     function createSkill(req, res) {
         var skill = req.body;

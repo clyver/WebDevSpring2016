@@ -10,6 +10,7 @@
     function SkillService($http) {
 
         var service = {
+            findAllSkills: findAllSkills,
             createSkillForUser: createSkillForUser,
             findAllSkillsForUser: findAllSkillsForUser,
             deleteSkillById: deleteSkillById,
@@ -45,6 +46,10 @@
 
         function findSkillById(skillId) {
             return $http.get("/api/project/skill/" + skillId);
+        }
+
+        function findAllSkills() {
+            return $http.get("/api/project/skill");
         }
 
     }

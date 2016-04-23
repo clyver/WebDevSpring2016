@@ -1,5 +1,5 @@
-[ {"_id": "000", "title": "birdwatching", "level": "novice", "taught": true, "sought": false,  "userId": 123},
-  {"_id": "010", "title": "surfing", "level": "Advanced", "taught": true, "sought": false, "userId": 123},
-  {"_id": "020","title": "coding", "level": "Professional", "taught": true, "sought": false, "userId": 234},
-  {"_id": "030", "title": "guitar lessons", "level": "experienced", "taught": false, "sought": true, "userId": 123},
-  {"_id": "040", "title": "gardening", "level": "Pro", "taught": false, "sought": true, "userId": 123}]
+[ {"_id": "000", "title": "birdwatching", "level": "novice", "taught": true, "sought": false,  "userId": 123, "email": "alice@a.com"},
+  {"_id": "010", "title": "surfing", "level": "Advanced", "taught": true, "sought": false, "userId": 123, "email": "alice@a.com"},
+  {"_id": "020","title": "coding", "level": "Professional", "taught": true, "sought": false, "userId": 234, "email": "bob@b.com"},
+  {"_id": "030", "title": "guitar lessons", "level": "experienced", "taught": false, "sought": true, "userId": 123, "email": "alice@a.com"},
+  {"_id": "040", "title": "gardening", "level": "Pro", "taught": false, "sought": true, "userId": 123, "email": "alice@a.com"}]
