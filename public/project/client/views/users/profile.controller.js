@@ -54,7 +54,7 @@
 
                     SkillService.createSkillForUser($scope.currentUser._id, skill).then(
                         function (response) {
-                            updateUserSkills(response);
+                            updateUserSkills(response.data);
                         }
                     )
                 }

@@ -13,39 +13,75 @@ module.exports = function(app, model) {
     app.put("/api/project/skill/:skillId", updateSkillById);
 
     function findAllSkills(req, res) {
-        var skills = model.findAllSkills();
-        res.json(skills);
+        model.findAllSkills()
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function createSkill(req, res) {
         var skill = req.body;
-        var updated_skills = model.createSkill(skill);
-        res.json(updated_skills);
+
+        delete skill._id;
+        console.log("New Skill");
+        console.log(skill);
+        model.createSkill(skill)
+            .then(function (newSkill) {
+                res.json(newSkill);
+            }, function (err) {
+                res.json({'error': err});
+            });
     }
 
     function findAllSkillsForUser(req, res) {
         var user = req.body;
-        var user_skills = model.findAllSkillsForUser(user);
-        res.json(user_skills);
-
+        model.findAllSkillsForUser(user)
+            .then(function (newSkill) {
+                res.json(newSkill);
+            }, function (err) {
+                res.json({'error': err});
+            });
     }
 
     function deleteSkillById(req, res) {
         var skillId = req.params.id;
-        var reduced_skills =  model.deleteSkillById(skillId);
-        res.json(reduced_skills);
+        model.deleteSkillById(skillId).then(
+            function (doc) {
+                res.json(doc);
+            },
+            function (err) {
+                res.json(err)
+            }
+        );
     }
 
     function updateSkillById(req, res) {
         var newSkill = req.body;
-        var skills = model.updateSkillById(newSkill._id, newSkill);
-        res.json(skills)
+        model.updateSkillById(newSkill._id, newSkill).then(
+            function (doc) {
+                res.json(doc);
+            },
+            function (err) {
+                res.json(err)
+            }
+        );
     }
 
     function findSkillById(req, res) {
         var skillId = req.params.skillId;
-        var skill = model.findSkillById(skillId);
-        res.json(skill);
+        model.findSkillById(skillId).then(
+            function (doc) {
+                res.json(doc);
+            },
+            function (err) {
+                res.json(err)
+            }
+        );
 
     }
 

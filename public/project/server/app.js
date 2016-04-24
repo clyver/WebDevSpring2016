@@ -10,7 +10,8 @@
         require(__dirname + '/services/user.service.server.js')(app, userModel);
 
         // Skill things
-        var skillModel = require(__dirname + '/models/skill.model.js')();
+        var skillSchema = require(__dirname + '/models/skill.schema.server.js')(mongoose);
+        var skillModel = require(__dirname + '/models/skill.model.js')(mongoose, skillSchema);
         require(__dirname + '/services/skill.service.server.js')(app, skillModel);
     };
 })();

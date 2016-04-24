@@ -11,7 +11,7 @@
             'password': {'type': String, 'required': true},
             'firstName': String,
             'lastName': String,
-            'email': String,
+            'email': String
         }, {'collection': 'projectUser'});
         return userSchema;
     };
