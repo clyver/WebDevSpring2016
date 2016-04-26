@@ -5,13 +5,57 @@
 'use strict';
 module.exports = function(app, model) {
 
+    var passport      = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+
     app.get("/api/project/user/username/:username/password/:password", findUserByCredentials);
+    app.post("/api/project/login", passport.authenticate('local'), login);
     app.get("/api/project/user", findAllUsers);
     app.get("/api/project/user/:userId", findUserById);
     app.post("/api/project/admin/user", createUser);
     app.delete("/api/project/user/:id", deleteUser);
     app.put("/api/project/user/:id", updateUser);
 
+    passport.use(new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+
+    function localStrategy(username, password, done) {
+        model
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if (!user) { return done(null, false); }
+                    return done(null, user);
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        model
+            .findUserById(user._id)
+            .then(
+                function(user) {
+                    done(null, user);
+                },
+                function(err) {
+                    done(err, null);
+                }
+            );
+    }
+
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
+    }
 
     function createUser(req, res) {
         var new_user = req.body;
